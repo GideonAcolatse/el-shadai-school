@@ -1,0 +1,145 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model SiteSettings {
+  id                 String   @id @default("default")
+  schoolName         String   @default("El-Shadai School")
+  motto              String   @default("Let Your Light Shine")
+  heroBadge          String   @default("Tema Newtown Manhean • Preschool, Primary & JHS")
+  heroTitle          String   @default("El-Shadai School — Let Your Light Shine")
+  heroSubtitle       String   @default("Providing quality private education in Tema, Ghana, to nurture future leaders with academic excellence, discipline, and moral integrity.")
+  heroImage          String   @default("/images/school/DSC_0064.jpg")
+  aboutSummary       String   @db.Text
+  mission            String   @db.Text
+  vision             String   @db.Text
+  coreValues         String   @default("Excellence, Discipline, Integrity, Respect, and Leadership")
+  headteacherName    String   @default("Mrs. Elisabeth Afua Quarshie Ackwornu")
+  headteacherRole    String   @default("Headteacher")
+  headteacherMessage String   @db.Text
+  headteacherImage   String   @default("/images/school/leader-headteacher.jpg")
+  address            String   @default("Tema Newtown Manhean, Greater Accra Region, Ghana")
+  phonePrimary       String   @default("+233 (0) 244 72 1828")
+  phoneSecondary     String   @default("+233 (0) 244 13 4854")
+  emailInfo          String   @default("info@elshadaischool.com")
+  emailAdmissions    String   @default("admissions@elshadaischool.com")
+  admissionFeeTitle  String   @default("One-Time Admission")
+  admissionFeeText   String   @default("Free Admission — No hidden registration fees for new families.")
+  primaryTuitionText String   @default("Affordable and tailored termly payment plans designed for families.")
+  jhsTuitionText     String   @default("Competitive fees with intensive BECE preparation and practical STEM skills.")
+  facebookUrl        String?  @default("https://web.facebook.com/patience.ankamahaddo.1")
+  instagramUrl       String?  @default("#")
+  tiktokUrl          String?  @default("#")
+  youtubeUrl         String?  @default("#")
+  urgentBannerActive Boolean  @default(true)
+  urgentBannerText   String?  @default("Admissions Open for the 2026/2027 Academic Year (Preschool, Primary & JHS) — Free Admission Forms Available!")
+  urgentBannerLink   String?  @default("/admission")
+  updatedAt          DateTime @updatedAt
+}
+
+model Notice {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  category    String   @default("Academic") // "Academic" | "Events" | "PTA" | "Admissions" | "Exams" | "General"
+  excerpt     String   @db.Text
+  content     String   @db.Text
+  coverImage  String?
+  attachment  String?
+  isPinned    Boolean  @default(false)
+  published   Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model SchoolEvent {
+  id          String    @id @default(cuid())
+  title       String
+  description String?   @db.Text
+  eventDate   DateTime
+  endDate     DateTime?
+  timeString  String?   @default("8:00 AM - 2:00 PM")
+  location    String?   @default("El-Shadai Campus, Tema Newtown Manhean")
+  category    String    @default("Term Date") // "Term Date" | "Exam" | "PTA" | "Sports & Culture" | "Holiday"
+  isFeatured  Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+}
+
+model GalleryItem {
+  id        String   @id @default(cuid())
+  title     String
+  caption   String?
+  category  String   @default("Classroom Learning") // "Classroom Learning" | "STEM & Projects" | "Sports & Physical Education" | "Creative Arts & Culture" | "Events & Celebrations" | "Teachers & Leadership"
+  imageUrl  String
+  featured  Boolean  @default(false)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model LeaderMember {
+  id          String   @id @default(cuid())
+  name        String
+  role        String
+  bio         String?  @db.Text
+  imageUrl    String
+  facebookUrl String?
+  twitterUrl  String?
+  linkedinUrl String?
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model AdmissionApplication {
+  id                 String   @id @default(cuid())
+  referenceNumber    String   @unique
+  studentFirstName   String
+  studentMiddleName  String?
+  studentLastName    String
+  dateOfBirth        String
+  gender             String
+  levelApplying      String
+  gradeClass         String
+  previousSchool     String?
+  guardianName       String
+  guardianRelation   String   @default("Parent")
+  guardianPhone      String
+  guardianEmail      String
+  residentialAddress String
+  city               String   @default("Tema")
+  medicalNotes       String?  @db.Text
+  status             String   @default("Pending") // "Pending" | "Reviewed" | "Interview Scheduled" | "Admitted"
+  adminNotes         String?  @db.Text
+  createdAt          DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String   @db.Text
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model UploadedAsset {
+  id        String   @id @default(cuid())
+  filename  String
+  mimeType  String
+  size      Int
+  data      Bytes
+  createdAt DateTime @default(now())
+}
