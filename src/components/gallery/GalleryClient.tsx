@@ -13,8 +13,7 @@ export interface GalleryItemDTO {
   featured: boolean;
 }
 
-const CATEGORIES = [
-  "All",
+const DEFAULT_CATEGORIES = [
   "Classroom Learning",
   "STEM & Projects",
   "Creative Arts & Culture",
@@ -33,6 +32,23 @@ const SPRING_CRITICAL = {
 export function GalleryClient({ items }: { items: GalleryItemDTO[] }) {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  const categories = useMemo(() => {
+    const customCats = Array.from(
+      new Set(
+        items
+          .map((i) => i.category?.trim())
+          .filter(
+            (c): c is string =>
+              Boolean(c) &&
+              !DEFAULT_CATEGORIES.some(
+                (def) => def.toLowerCase() === c.toLowerCase()
+              )
+          )
+      )
+    );
+    return ["All", ...DEFAULT_CATEGORIES, ...customCats];
+  }, [items]);
 
   const filteredItems = useMemo(() => {
     if (activeCategory === "All") return items;
@@ -60,7 +76,7 @@ export function GalleryClient({ items }: { items: GalleryItemDTO[] }) {
     <div className="space-y-10">
       {/* Filterable Category Tabs */}
       <div className="flex flex-wrap items-center gap-2 bg-white p-2 rounded-2xl border border-slate-200/80 shadow-xs max-w-fit">
-        {CATEGORIES.map((cat) => {
+        {categories.map((cat) => {
           const isActive = activeCategory === cat;
           const count =
             cat === "All"

@@ -6,7 +6,6 @@ import {
   Phone,
   Mail,
   MapPin,
-  ShieldCheck,
   Send,
   CheckCircle2,
   Award,
@@ -139,8 +138,8 @@ export function Footer({
             <p className="text-sm text-slate-300 leading-relaxed">
               El-Shadai School in Tema Newtown Manhean provides quality private education across Preschool, Primary, and Junior High School, building academic excellence, discipline, and moral character.
             </p>
-            <div className="pt-2 flex items-center gap-3">
-              {facebookUrl && (
+            {facebookUrl && (
+              <div className="pt-2 flex items-center gap-3">
                 <a
                   href={facebookUrl}
                   target="_blank"
@@ -150,15 +149,8 @@ export function Footer({
                   <span>Facebook Page</span>
                   <ExternalLink className="w-3.5 h-3.5 text-[#e6a2ad]" />
                 </a>
-              )}
-              <Link
-                href="/admin"
-                className="apple-press inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#9e3b4b]/25 hover:bg-[#9e3b4b]/35 border border-[#e6a2ad]/30 text-xs font-semibold text-white"
-              >
-                <ShieldCheck className="w-3.5 h-3.5 text-[#e6a2ad]" />
-                <span>Admin CMS</span>
-              </Link>
-            </div>
+              </div>
+            )}
           </div>
 
           {/* Column 2: Quick Navigation */}

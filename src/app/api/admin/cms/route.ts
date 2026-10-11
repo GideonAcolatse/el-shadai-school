@@ -182,8 +182,9 @@ export async function POST(req: NextRequest) {
           where: { id: String(data.id) },
           data: {
             ...(data.title !== undefined ? { title: String(data.title).trim() } : {}),
-            ...(data.caption !== undefined ? { caption: data.caption } : {}),
-            ...(data.category !== undefined ? { category: data.category } : {}),
+            ...(data.caption !== undefined ? { caption: data.caption ? String(data.caption).trim() : null } : {}),
+            ...(data.category !== undefined ? { category: String(data.category).trim() } : {}),
+            ...(data.imageUrl !== undefined ? { imageUrl: String(data.imageUrl).trim() } : {}),
             ...(data.featured !== undefined ? { featured: Boolean(data.featured) } : {}),
           },
         });

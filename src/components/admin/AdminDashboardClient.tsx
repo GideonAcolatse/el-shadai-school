@@ -117,8 +117,10 @@ export function AdminDashboardClient({
     category: "Term Date",
   });
 
-  // Gallery Upload State
+  // Gallery Upload & Edit State
   const [galleryFilter, setGalleryFilter] = useState("All");
+  const [editingGalleryId, setEditingGalleryId] = useState<string | null>(null);
+  const [isCustomAlbum, setIsCustomAlbum] = useState(false);
   const [galleryForm, setGalleryForm] = useState({
     title: "",
     caption: "",
@@ -327,8 +329,23 @@ export function AdminDashboardClient({
       return;
     }
     try {
-      const res = await cmsAction("gallery", "create", galleryForm);
-      setGallery((prev) => [res.item, ...prev]);
+      if (editingGalleryId) {
+        const res = await cmsAction("gallery", "update", {
+          id: editingGalleryId,
+          ...galleryForm,
+        });
+        setGallery((prev) =>
+          prev.map((g) => (g.id === editingGalleryId ? res.item : g))
+        );
+        setEditingGalleryId(null);
+        setIsCustomAlbum(false);
+        showNotification("Gallery photo & album updated!");
+      } else {
+        const res = await cmsAction("gallery", "create", galleryForm);
+        setGallery((prev) => [res.item, ...prev]);
+        setIsCustomAlbum(false);
+        showNotification("Photo added to the School Gallery!");
+      }
       setGalleryForm({
         title: "",
         caption: "",
@@ -336,9 +353,32 @@ export function AdminDashboardClient({
         imageUrl: "",
         featured: true,
       });
-      showNotification("Photo added to the School Gallery!");
     } catch {
-      showNotification("Failed to add gallery photo", "error");
+      showNotification(
+        editingGalleryId
+          ? "Failed to update gallery photo"
+          : "Failed to add gallery photo",
+        "error"
+      );
+    }
+  }
+
+  async function handleQuickGalleryCategoryChange(
+    item: any,
+    newCategory: string
+  ) {
+    if (!newCategory || newCategory === item.category) return;
+    try {
+      const res = await cmsAction("gallery", "update", {
+        id: item.id,
+        category: newCategory,
+      });
+      setGallery((prev) =>
+        prev.map((g) => (g.id === item.id ? res.item : g))
+      );
+      showNotification(`Moved "${item.title}" to ${newCategory}`);
+    } catch {
+      showNotification("Could not change photo album", "error");
     }
   }
 
@@ -347,6 +387,16 @@ export function AdminDashboardClient({
     try {
       await cmsAction("gallery", "delete", { id });
       setGallery((prev) => prev.filter((g) => g.id !== id));
+      if (editingGalleryId === id) {
+        setEditingGalleryId(null);
+        setGalleryForm({
+          title: "",
+          caption: "",
+          category: "Classroom Learning",
+          imageUrl: "",
+          featured: true,
+        });
+      }
       showNotification("Photo removed from gallery.");
     } catch {
       showNotification("Could not delete photo", "error");
@@ -466,6 +516,15 @@ export function AdminDashboardClient({
     router.push("/admin/login");
     router.refresh();
   }
+
+  const allGalleryAlbums = Array.from(
+    new Set([
+      ...GALLERY_CATEGORIES,
+      ...gallery
+        .map((g) => g.category?.trim())
+        .filter((c): c is string => Boolean(c)),
+    ])
+  );
 
   const filteredGallery =
     galleryFilter === "All"
@@ -1424,28 +1483,77 @@ export function AdminDashboardClient({
           {/* ==================== SECTION 4: PHOTO GALLERY MANAGER ==================== */}
           {activeSection === "gallery" && (
             <div className="space-y-8">
-              {/* Upload New Photo Box */}
+              {/* Upload / Edit Photo Box */}
               <form
+                id="gallery-editor-form"
                 onSubmit={handleAddGalleryPhoto}
-                className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-xs"
+                className={`bg-white rounded-2xl p-6 sm:p-8 border shadow-xs transition-colors ${
+                  editingGalleryId
+                    ? "border-[#1b2a6b] ring-2 ring-[#1b2a6b]/10"
+                    : "border-slate-200/80"
+                }`}
               >
-                <h2 className="font-display font-bold text-xl text-[#1b2a6b] mb-1">
-                  Upload New Photo to School Gallery
-                </h2>
-                <p className="text-xs text-slate-500 mb-6">
-                  Select a picture from your computer or phone. It will be uploaded directly and shown in the Gallery.
-                </p>
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h2 className="font-display font-bold text-xl text-[#1b2a6b]">
+                        {editingGalleryId
+                          ? "Edit Gallery Photo & Album"
+                          : "Upload New Photo to School Gallery"}
+                      </h2>
+                      {editingGalleryId && (
+                        <span className="px-2.5 py-0.5 rounded-md bg-[#f0f3fa] text-[#1b2a6b] text-[11px] font-bold">
+                          Editing Mode
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-slate-500 mt-1">
+                      {editingGalleryId
+                        ? "Update this photo's title, album/category, caption, or replace the image, then click Save Photo Changes."
+                        : "Select a picture from your computer or phone. It will be uploaded directly and shown in the Gallery."}
+                    </p>
+                  </div>
+
+                  {editingGalleryId && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEditingGalleryId(null);
+                        setIsCustomAlbum(false);
+                        setGalleryForm({
+                          title: "",
+                          caption: "",
+                          category: "Classroom Learning",
+                          imageUrl: "",
+                          featured: true,
+                        });
+                      }}
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold cursor-pointer"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                      Cancel Edit
+                    </button>
+                  )}
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                   {/* Upload Dropzone */}
                   <div className="md:col-span-4">
-                    <label className="flex flex-col items-center justify-center h-44 rounded-2xl border-2 border-dashed border-slate-300 bg-[#f0f3fa]/50 hover:bg-[#f0f3fa] transition-colors cursor-pointer p-4 text-center relative overflow-hidden">
+                    <label className="flex flex-col items-center justify-center h-44 rounded-2xl border-2 border-dashed border-slate-300 bg-[#f0f3fa]/50 hover:bg-[#f0f3fa] transition-colors cursor-pointer p-4 text-center relative overflow-hidden group">
                       {galleryForm.imageUrl ? (
-                        <img
-                          src={galleryForm.imageUrl}
-                          alt="Preview"
-                          className="absolute inset-0 w-full h-full object-cover"
-                        />
+                        <>
+                          <img
+                            src={galleryForm.imageUrl}
+                            alt="Preview"
+                            className="absolute inset-0 w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-[#121c46]/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white p-3">
+                            <Upload className="w-6 h-6 mb-1" />
+                            <span className="text-xs font-semibold">
+                              Click to Replace Photo
+                            </span>
+                          </div>
+                        </>
                       ) : uploadingImage ? (
                         <div className="flex flex-col items-center gap-2 text-[#1b2a6b]">
                           <Loader2 className="w-7 h-7 animate-spin" />
@@ -1510,25 +1618,66 @@ export function AdminDashboardClient({
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-slate-700 mb-1">
-                          Album / Category
-                        </label>
-                        <select
-                          value={galleryForm.category}
-                          onChange={(e) =>
-                            setGalleryForm({
-                              ...galleryForm,
-                              category: e.target.value,
-                            })
-                          }
-                          className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm"
-                        >
-                          {GALLERY_CATEGORIES.map((c) => (
-                            <option key={c} value={c}>
-                              {c}
-                            </option>
-                          ))}
-                        </select>
+                        <div className="flex items-center justify-between mb-1">
+                          <label className="block text-xs font-semibold text-slate-700">
+                            Album / Category *
+                          </label>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setIsCustomAlbum((prev) => !prev);
+                              if (!isCustomAlbum) {
+                                setGalleryForm((prev) => ({
+                                  ...prev,
+                                  category: "",
+                                }));
+                              } else {
+                                setGalleryForm((prev) => ({
+                                  ...prev,
+                                  category:
+                                    allGalleryAlbums[0] || "Classroom Learning",
+                                }));
+                              }
+                            }}
+                            className="text-[11px] font-semibold text-[#9e3b4b] hover:underline cursor-pointer"
+                          >
+                            {isCustomAlbum
+                              ? "Choose Existing Album"
+                              : "+ New Custom Album"}
+                          </button>
+                        </div>
+                        {isCustomAlbum ? (
+                          <input
+                            type="text"
+                            required
+                            value={galleryForm.category}
+                            onChange={(e) =>
+                              setGalleryForm({
+                                ...galleryForm,
+                                category: e.target.value,
+                              })
+                            }
+                            placeholder="Type new album name (e.g., Graduation 2026)"
+                            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-[#1b2a6b]/40 text-sm"
+                          />
+                        ) : (
+                          <select
+                            value={galleryForm.category}
+                            onChange={(e) =>
+                              setGalleryForm({
+                                ...galleryForm,
+                                category: e.target.value,
+                              })
+                            }
+                            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm"
+                          >
+                            {allGalleryAlbums.map((c) => (
+                              <option key={c} value={c}>
+                                {c}
+                              </option>
+                            ))}
+                          </select>
+                        )}
                       </div>
                     </div>
 
@@ -1568,14 +1717,44 @@ export function AdminDashboardClient({
                         </span>
                       </label>
 
-                      <button
-                        type="submit"
-                        disabled={busy || uploadingImage}
-                        className="apple-press inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#9e3b4b] hover:bg-[#842f3d] text-white text-xs font-semibold shadow-sm cursor-pointer"
-                      >
-                        <Plus className="w-4 h-4" />
-                        Add Photo to Gallery
-                      </button>
+                      <div className="flex items-center gap-2">
+                        {editingGalleryId && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setEditingGalleryId(null);
+                              setIsCustomAlbum(false);
+                              setGalleryForm({
+                                title: "",
+                                caption: "",
+                                category: "Classroom Learning",
+                                imageUrl: "",
+                                featured: true,
+                              });
+                            }}
+                            className="px-4 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold cursor-pointer"
+                          >
+                            Cancel
+                          </button>
+                        )}
+                        <button
+                          type="submit"
+                          disabled={busy || uploadingImage}
+                          className="apple-press inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#9e3b4b] hover:bg-[#842f3d] text-white text-xs font-semibold shadow-sm cursor-pointer"
+                        >
+                          {editingGalleryId ? (
+                            <>
+                              <Save className="w-4 h-4" />
+                              Save Photo Changes
+                            </>
+                          ) : (
+                            <>
+                              <Plus className="w-4 h-4" />
+                              Add Photo to Gallery
+                            </>
+                          )}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1584,11 +1763,16 @@ export function AdminDashboardClient({
               {/* Filter & Grid */}
               <div className="space-y-4">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <h3 className="font-display font-bold text-lg text-[#1b2a6b]">
-                    Manage Gallery Photos ({filteredGallery.length})
-                  </h3>
+                  <div>
+                    <h3 className="font-display font-bold text-lg text-[#1b2a6b]">
+                      Manage Gallery Photos ({filteredGallery.length})
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Change any photo&apos;s album directly from its dropdown or click Edit to modify its title, caption, or picture.
+                    </p>
+                  </div>
                   <div className="flex flex-wrap gap-1.5">
-                    {["All", ...GALLERY_CATEGORIES].map((cat) => (
+                    {["All", ...allGalleryAlbums].map((cat) => (
                       <button
                         key={cat}
                         type="button"
@@ -1605,57 +1789,126 @@ export function AdminDashboardClient({
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                  {filteredGallery.map((item) => (
-                    <div
-                      key={item.id}
-                      className="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs group flex flex-col justify-between"
-                    >
-                      <div className="relative h-44 bg-slate-100">
-                        <img
-                          src={item.imageUrl}
-                          alt={item.title}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                        <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md bg-[#121c46]/85 text-white text-[10px] font-semibold backdrop-blur-xs">
-                          {item.category}
-                        </span>
-                      </div>
-                      <div className="p-3.5 flex items-center justify-between gap-2">
-                        <div className="min-w-0">
-                          <p className="font-bold text-xs text-[#1b2a6b] truncate">
-                            {item.title}
-                          </p>
-                          <p className="text-[11px] text-slate-500 truncate">
-                            {item.caption || "El-Shadai Campus"}
-                          </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  {filteredGallery.map((item) => {
+                    const isBeingEdited = editingGalleryId === item.id;
+                    return (
+                      <div
+                        key={item.id}
+                        className={`bg-white rounded-2xl overflow-hidden border shadow-xs group flex flex-col justify-between transition-all ${
+                          isBeingEdited
+                            ? "border-[#1b2a6b] ring-2 ring-[#1b2a6b]/15"
+                            : "border-slate-200/80"
+                        }`}
+                      >
+                        <div className="relative h-44 bg-slate-100">
+                          <img
+                            src={item.imageUrl}
+                            alt={item.title}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                          <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md bg-[#121c46]/85 text-white text-[10px] font-semibold backdrop-blur-xs">
+                            {item.category}
+                          </span>
+                          {item.featured && (
+                            <span className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-md bg-[#9e3b4b]/90 text-white text-[10px] font-semibold backdrop-blur-xs">
+                              Featured
+                            </span>
+                          )}
                         </div>
-                        <div className="flex items-center gap-1 shrink-0">
-                          <button
-                            type="button"
-                            onClick={() => handleToggleGalleryFeatured(item)}
-                            title="Toggle Homepage Featured"
-                            className={`p-1.5 rounded-lg cursor-pointer ${
-                              item.featured
-                                ? "bg-[#fbf3f4] text-[#9e3b4b]"
-                                : "bg-slate-100 text-slate-400"
-                            }`}
-                          >
-                            <Star className="w-3.5 h-3.5 fill-current" />
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => handleDeleteGalleryPhoto(item.id)}
-                            title="Delete Photo"
-                            className="p-1.5 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 cursor-pointer"
-                          >
-                            <Trash2 className="w-3.5 h-3.5" />
-                          </button>
+                        <div className="p-3.5 space-y-3">
+                          <div className="min-w-0">
+                            <p className="font-bold text-xs text-[#1b2a6b] truncate">
+                              {item.title}
+                            </p>
+                            <p className="text-[11px] text-slate-500 truncate mt-0.5">
+                              {item.caption || "El-Shadai Campus"}
+                            </p>
+                          </div>
+
+                          {/* Quick Album Changer */}
+                          <div>
+                            <label className="block text-[10px] font-semibold uppercase tracking-wider text-slate-400 mb-1">
+                              Album
+                            </label>
+                            <select
+                              value={item.category}
+                              onChange={(e) =>
+                                handleQuickGalleryCategoryChange(
+                                  item,
+                                  e.target.value
+                                )
+                              }
+                              className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700 focus:outline-none focus:border-[#1b2a6b]"
+                            >
+                              {allGalleryAlbums.map((album) => (
+                                <option key={album} value={album}>
+                                  {album}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+
+                          {/* Action Buttons */}
+                          <div className="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setEditingGalleryId(item.id);
+                                setIsCustomAlbum(false);
+                                setGalleryForm({
+                                  title: item.title || "",
+                                  caption: item.caption || "",
+                                  category:
+                                    item.category || "Classroom Learning",
+                                  imageUrl: item.imageUrl || "",
+                                  featured: Boolean(item.featured),
+                                });
+                                document
+                                  .getElementById("gallery-editor-form")
+                                  ?.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start",
+                                  });
+                              }}
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#f0f3fa] hover:bg-[#e1e7f5] text-[#1b2a6b] text-xs font-semibold cursor-pointer"
+                            >
+                              <Edit3 className="w-3.5 h-3.5" />
+                              <span>Edit Details</span>
+                            </button>
+
+                            <div className="flex items-center gap-1 shrink-0">
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  handleToggleGalleryFeatured(item)
+                                }
+                                title="Toggle Homepage Featured"
+                                className={`p-1.5 rounded-lg cursor-pointer ${
+                                  item.featured
+                                    ? "bg-[#fbf3f4] text-[#9e3b4b]"
+                                    : "bg-slate-100 text-slate-400"
+                                }`}
+                              >
+                                <Star className="w-3.5 h-3.5 fill-current" />
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  handleDeleteGalleryPhoto(item.id)
+                                }
+                                title="Delete Photo"
+                                className="p-1.5 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 cursor-pointer"
+                              >
+                                <Trash2 className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>
