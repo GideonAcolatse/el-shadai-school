@@ -54,7 +54,7 @@ const LEADERS = [
     sortOrder: 1,
   },
   {
-    name: "Mrs. Patience Ankama-Addo",
+    name: "Mrs. Patience Ankamah Addo",
     role: "Director",
     bio: "Visionary school leader committed to excellence in private education and community upliftment in Tema Newtown Manhean.",
     imageUrl: "/images/school/leader-director.jpg",
@@ -241,7 +241,7 @@ const GALLERY_ITEMS = [
 
   // Leadership Portraits in Gallery
   { title: "Mrs. Elisabeth Afua Quarshie Ackwornu", caption: "Headteacher — El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/DSC_9320.jpg", featured: false, sortOrder: 14 },
-  { title: "Mrs. Patience Ankama-Addo", caption: "Director — El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/DSC_0057.jpg", featured: false, sortOrder: 15 },
+  { title: "Mrs. Patience Ankamah Addo", caption: "Director — El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/leader-director.jpg", featured: false, sortOrder: 15 },
   { title: "Mr. Nii Fosu Baddoo", caption: "Administrator — El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/leader-administrator.jpg", featured: false, sortOrder: 16 },
   { title: "Mrs. Sylvia Sackey", caption: "Bursar — El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/leader-bursar.jpg", featured: false, sortOrder: 17 },
 

@@ -181,11 +181,11 @@ export default async function ContactPage() {
                 />
               </div>
 
-              {/* Saved Original Campus Map Image Preview */}
+              {/* Campus Photo Preview */}
               <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-3.5">
                 <img
-                  src="/images/school/campus-map.jpg"
-                  alt="Tema Newtown Manhean Campus Reference Map"
+                  src="/images/school/DSC_0738.jpg"
+                  alt="El-Shadai School Campus in Tema Newtown Manhean"
                   className="w-16 h-16 rounded-xl object-cover border border-slate-200 shrink-0"
                 />
                 <div>

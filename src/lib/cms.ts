@@ -56,7 +56,7 @@ export const FALLBACK_LEADERS = [
   },
   {
     id: "leader-2",
-    name: "Mrs. Patience Ankama-Addo",
+    name: "Mrs. Patience Ankamah Addo",
     role: "Director",
     bio: "Visionary school leader committed to excellence in private education and community upliftment in Tema Newtown Manhean.",
     imageUrl: "/images/school/leader-director.jpg",
@@ -287,7 +287,7 @@ export const FALLBACK_GALLERY = [
   { id: "g-12", title: "Campus Assembly & Fellowship", caption: "Morning assembly and student leadership at Tema Newtown Manhean.", category: "Events & Celebrations", imageUrl: "/images/school/DSC_0738.jpg", featured: true, sortOrder: 12, createdAt: new Date() },
   { id: "g-13", title: "Collaborative Student Life", caption: "Friendship, teamwork, and joyful learning across campus.", category: "Events & Celebrations", imageUrl: "/images/school/DSC_0771.jpg", featured: true, sortOrder: 13, createdAt: new Date() },
   { id: "g-14", title: "Mrs. Elisabeth Afua Quarshie Ackwornu", caption: "Headteacher — El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/DSC_9320.jpg", featured: false, sortOrder: 14, createdAt: new Date() },
-  { id: "g-15", title: "Mrs. Patience Ankama-Addo", caption: "Director — El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/DSC_0057.jpg", featured: false, sortOrder: 15, createdAt: new Date() },
+  { id: "g-15", title: "Mrs. Patience Ankamah Addo", caption: "Director — El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/leader-director.jpg", featured: false, sortOrder: 15, createdAt: new Date() },
   { id: "g-16", title: "Mr. Nii Fosu Baddoo", caption: "Administrator — El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/leader-administrator.jpg", featured: false, sortOrder: 16, createdAt: new Date() },
   { id: "g-17", title: "Mrs. Sylvia Sackey", caption: "Bursar — El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/leader-bursar.jpg", featured: false, sortOrder: 17, createdAt: new Date() },
   { id: "g-18", title: "Interactive Lesson in Progress", caption: "Engaging classroom instruction and student participation.", category: "Classroom Learning", imageUrl: "/images/school/DSC_0068.jpg", featured: false, sortOrder: 18, createdAt: new Date() },
