@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, ZoomIn, Sparkles } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 
 export interface GalleryItemDTO {
   id: string;
@@ -58,8 +58,8 @@ export function GalleryClient({ items }: { items: GalleryItemDTO[] }) {
 
   return (
     <div className="space-y-10">
-      {/* Apple-Style Filterable Category Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-2 bg-white p-2 rounded-3xl border border-slate-200/80 shadow-xs max-w-fit mx-auto">
+      {/* Filterable Category Tabs */}
+      <div className="flex flex-wrap items-center gap-2 bg-white p-2 rounded-2xl border border-slate-200/80 shadow-xs max-w-fit">
         {CATEGORIES.map((cat) => {
           const isActive = activeCategory === cat;
           const count =
@@ -77,23 +77,23 @@ export function GalleryClient({ items }: { items: GalleryItemDTO[] }) {
                 setActiveCategory(cat);
                 setSelectedIndex(null);
               }}
-              className={`apple-press relative px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${
+              className={`apple-press relative px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${
                 isActive
                   ? "text-white"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                  : "text-slate-600 hover:text-[#1b2a6b] hover:bg-slate-50"
               }`}
             >
               {isActive && (
                 <motion.span
                   layoutId="gallery-cat-pill"
                   transition={SPRING_CRITICAL}
-                  className="absolute inset-0 rounded-2xl bg-[#1559ed] shadow-xs -z-10"
+                  className="absolute inset-0 rounded-xl bg-[#1b2a6b] shadow-xs -z-10"
                 />
               )}
               <span className="flex items-center gap-1.5">
                 <span>{cat}</span>
                 <span
-                  className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono ${
+                  className={`px-1.5 py-0.5 rounded-md text-[10px] font-mono ${
                     isActive
                       ? "bg-white/20 text-white"
                       : "bg-slate-100 text-slate-500"
@@ -122,7 +122,7 @@ export function GalleryClient({ items }: { items: GalleryItemDTO[] }) {
               exit={{ opacity: 0, scale: 0.94 }}
               transition={SPRING_CRITICAL}
               onClick={() => setSelectedIndex(idx)}
-              className="apple-card apple-press rounded-3xl overflow-hidden bg-white cursor-pointer group flex flex-col justify-between"
+              className="apple-card apple-press rounded-2xl overflow-hidden bg-white cursor-pointer group flex flex-col justify-between"
             >
               <div className="aspect-[4/3] bg-slate-100 overflow-hidden relative">
                 <img
@@ -131,9 +131,8 @@ export function GalleryClient({ items }: { items: GalleryItemDTO[] }) {
                   loading="lazy"
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0b192c]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-4">
-                  <span className="text-xs font-semibold text-amber-300 flex items-center gap-1">
-                    <Sparkles className="w-3.5 h-3.5" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#121c46]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-4">
+                  <span className="text-xs font-semibold text-white">
                     {item.category}
                   </span>
                   <span className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center">
@@ -142,15 +141,15 @@ export function GalleryClient({ items }: { items: GalleryItemDTO[] }) {
                 </div>
               </div>
               <div className="p-4">
-                <span className="text-[11px] font-mono uppercase tracking-wider text-[#1559ed] font-semibold block">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[#9e3b4b] font-semibold block">
                   {item.category}
                 </span>
-                <h3 className="text-sm font-bold text-[#0b192c] mt-0.5 line-clamp-1">
-                  {item.title}
+                <h3 className="text-sm font-bold text-[#1b2a6b] mt-0.5 line-clamp-1">
+                  {item.title.replace(/—/g, "-")}
                 </h3>
                 {item.caption && (
                   <p className="text-xs text-slate-500 mt-1 line-clamp-2">
-                    {item.caption}
+                    {item.caption.replace(/—/g, "-")}
                   </p>
                 )}
               </div>
@@ -176,15 +175,15 @@ export function GalleryClient({ items }: { items: GalleryItemDTO[] }) {
               exit={{ scale: 0.92, opacity: 0 }}
               transition={SPRING_CRITICAL}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-5xl w-full bg-[#0b192c] rounded-3xl overflow-hidden border border-white/15 shadow-2xl"
+              className="relative max-w-5xl w-full bg-[#121c46] rounded-2xl overflow-hidden border border-white/15 shadow-2xl"
             >
               {/* Top Controls */}
               <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/10 text-white">
                 <div className="flex items-center gap-2.5">
-                  <span className="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-xs font-semibold">
+                  <span className="px-2.5 py-0.5 rounded-md bg-[#9e3b4b] text-white text-xs font-semibold">
                     {activeLightboxItem.category}
                   </span>
-                  <span className="text-xs font-mono text-slate-400">
+                  <span className="text-xs font-mono text-blue-200/70">
                     {selectedIndex + 1} / {filteredItems.length}
                   </span>
                 </div>
@@ -226,10 +225,12 @@ export function GalleryClient({ items }: { items: GalleryItemDTO[] }) {
 
               {/* Caption Footer */}
               <div className="p-5 text-white">
-                <h3 className="text-lg font-bold">{activeLightboxItem.title}</h3>
+                <h3 className="text-lg font-bold">
+                  {activeLightboxItem.title.replace(/—/g, "-")}
+                </h3>
                 {activeLightboxItem.caption && (
-                  <p className="text-sm text-slate-300 mt-1">
-                    {activeLightboxItem.caption}
+                  <p className="text-sm text-blue-100/80 mt-1">
+                    {activeLightboxItem.caption.replace(/—/g, "-")}
                   </p>
                 )}
               </div>

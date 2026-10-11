@@ -60,13 +60,13 @@ export function ContactForm() {
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={SPRING_CRITICAL}
-        className="bg-emerald-50/90 border border-emerald-200 rounded-3xl p-8 text-center"
+        className="bg-[#f0f3fa] border border-slate-200 rounded-2xl p-8 text-center"
       >
-        <div className="w-16 h-16 rounded-2xl bg-emerald-600 text-white flex items-center justify-center mx-auto mb-5 shadow-lg shadow-emerald-600/20">
+        <div className="w-16 h-16 rounded-2xl bg-[#1b2a6b] text-white flex items-center justify-center mx-auto mb-5 shadow-md">
           <CheckCircle2 className="w-8 h-8" />
         </div>
-        <h3 className="font-display font-bold text-2xl text-slate-900 mb-2">
-          Message Received!
+        <h3 className="font-bold text-2xl text-[#1b2a6b] mb-2">
+          Message Received
         </h3>
         <p className="text-slate-600 text-sm max-w-md mx-auto leading-relaxed">
           Thank you for reaching out to El-Shadai School. Our administrative team in Tema Newtown Manhean will respond to your inquiry shortly.
@@ -80,7 +80,7 @@ export function ContactForm() {
             setPhone("");
             setMessage("");
           }}
-          className="apple-press mt-6 px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-xs font-semibold hover:bg-slate-50 transition-colors cursor-pointer"
+          className="apple-press mt-6 px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-[#1b2a6b] text-xs font-semibold hover:bg-slate-50 transition-colors cursor-pointer"
         >
           Send Another Message
         </button>
@@ -91,7 +91,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       {errorMsg && (
-        <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2.5">
+        <div className="p-4 rounded-xl bg-[#fbf3f4] border border-[#edd5d9] text-[#9e3b4b] text-xs flex items-center gap-2.5">
           <AlertCircle className="w-4 h-4 shrink-0" />
           <span>{errorMsg}</span>
         </div>
@@ -108,7 +108,7 @@ export function ContactForm() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="e.g., Mr. Kwesi Mensah"
-            className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-[#1559ed]"
+            className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-[#1b2a6b]"
           />
         </div>
         <div>
@@ -120,7 +120,7 @@ export function ContactForm() {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="+233 24 000 0000"
-            className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-[#1559ed]"
+            className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-[#1b2a6b]"
           />
         </div>
       </div>
@@ -136,7 +136,7 @@ export function ContactForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="parent@example.com"
-            className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-[#1559ed]"
+            className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-[#1b2a6b]"
           />
         </div>
         <div>
@@ -146,7 +146,7 @@ export function ContactForm() {
           <select
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-[#1559ed]"
+            className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-[#1b2a6b]"
           >
             <option value="Admissions Inquiry">Admissions Inquiry</option>
             <option value="Tuition & Bursary">Tuition &amp; Payment Plans</option>
@@ -167,14 +167,14 @@ export function ContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="How can our administration team assist you and your child?"
-          className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-[#1559ed] resize-none"
+          className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-[#1b2a6b] resize-none"
         />
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="apple-press w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl bg-[#1559ed] hover:bg-[#0b3ea8] text-white font-semibold text-sm shadow-lg shadow-blue-600/20 transition-colors cursor-pointer disabled:opacity-60"
+        className="apple-press w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-[#9e3b4b] hover:bg-[#842f3d] text-white font-semibold text-sm shadow-sm transition-colors cursor-pointer disabled:opacity-60"
       >
         {isSubmitting ? (
           <>

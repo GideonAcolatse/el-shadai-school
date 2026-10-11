@@ -20,7 +20,6 @@ import {
   ExternalLink,
   LogOut,
   Save,
-  Sparkles,
   Phone,
   Mail,
   Loader2,
@@ -545,7 +544,7 @@ export function AdminDashboardClient({
 
       {/* ==================== PERSISTENT LEFT SIDEBAR ==================== */}
       <aside
-        className={`fixed lg:sticky top-0 left-0 z-50 h-screen w-72 bg-[#071636] text-white flex flex-col border-r border-white/10 shadow-2xl lg:shadow-none transition-transform duration-200 ${
+        className={`fixed lg:sticky top-0 left-0 z-50 h-screen w-72 bg-[#1b2a6b] text-white flex flex-col border-r border-white/10 shadow-2xl lg:shadow-none transition-transform duration-200 ${
           mobileSidebarOpen
             ? "translate-x-0"
             : "-translate-x-full lg:translate-x-0"
@@ -557,7 +556,7 @@ export function AdminDashboardClient({
             <img
               src="/images/school/logo.jpg"
               alt="El-Shadai Logo"
-              className="w-11 h-11 rounded-2xl object-cover border border-white/20 shadow-sm shrink-0"
+              className="w-11 h-11 rounded-2xl object-cover border border-white/20 shadow-sm shrink-0 bg-white p-0.5"
             />
             <div>
               <div className="flex items-center gap-2">
@@ -565,7 +564,7 @@ export function AdminDashboardClient({
                   El-Shadai CMS
                 </span>
               </div>
-              <span className="inline-flex items-center px-2 py-0.5 mt-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#fbbf24] text-slate-950">
+              <span className="inline-flex items-center px-2 py-0.5 mt-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-[#9e3b4b] text-white">
                 Admin Portal
               </span>
             </div>
@@ -582,7 +581,7 @@ export function AdminDashboardClient({
 
         {/* Sidebar Navigation Links */}
         <nav className="flex-1 overflow-y-auto px-3 py-5 space-y-1.5">
-          <p className="px-3 pb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+          <p className="px-3 pb-2 text-[10px] font-bold uppercase tracking-widest text-blue-200/70">
             CMS Modules
           </p>
           {sidebarItems.map((item) => {
@@ -596,10 +595,10 @@ export function AdminDashboardClient({
                   setActiveSection(item.id);
                   setMobileSidebarOpen(false);
                 }}
-                className={`apple-press w-full flex items-center justify-between gap-3 px-3.5 py-3 rounded-2xl text-left transition-all cursor-pointer ${
+                className={`apple-press w-full flex items-center justify-between gap-3 px-3.5 py-3 rounded-xl text-left transition-all cursor-pointer ${
                   active
-                    ? "bg-[#1559ed] text-white shadow-lg shadow-blue-600/25"
-                    : "text-slate-300 hover:text-white hover:bg-white/8"
+                    ? "bg-[#9e3b4b] text-white shadow-sm"
+                    : "text-blue-100/85 hover:text-white hover:bg-white/10"
                 }`}
               >
                 <div className="flex items-center gap-3 min-w-0">
@@ -607,7 +606,7 @@ export function AdminDashboardClient({
                     className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
                       active
                         ? "bg-white/20 text-white"
-                        : "bg-white/5 text-slate-300"
+                        : "bg-white/10 text-blue-100"
                     }`}
                   >
                     <Icon className="w-4 h-4" />
@@ -616,7 +615,7 @@ export function AdminDashboardClient({
                     <p className="text-xs font-bold truncate">{item.label}</p>
                     <p
                       className={`text-[10px] truncate ${
-                        active ? "text-blue-100" : "text-slate-400"
+                        active ? "text-rose-100" : "text-blue-200/70"
                       }`}
                     >
                       {item.subtitle}
@@ -625,15 +624,15 @@ export function AdminDashboardClient({
                 </div>
 
                 {item.alertCount ? (
-                  <span className="px-2 py-0.5 rounded-full bg-[#fbbf24] text-slate-950 text-[10px] font-bold shrink-0">
+                  <span className="px-2 py-0.5 rounded-md bg-white text-[#9e3b4b] text-[10px] font-bold shrink-0">
                     {item.alertCount} new
                   </span>
                 ) : item.count !== undefined ? (
                   <span
-                    className={`px-2 py-0.5 rounded-full text-[10px] font-semibold shrink-0 ${
+                    className={`px-2 py-0.5 rounded-md text-[10px] font-semibold shrink-0 ${
                       active
                         ? "bg-white/20 text-white"
-                        : "bg-white/8 text-slate-300"
+                        : "bg-white/10 text-blue-100"
                     }`}
                   >
                     {item.count}
@@ -641,7 +640,7 @@ export function AdminDashboardClient({
                 ) : (
                   <ChevronRight
                     className={`w-3.5 h-3.5 shrink-0 ${
-                      active ? "text-white" : "text-slate-500"
+                      active ? "text-white" : "text-blue-200/50"
                     }`}
                   />
                 )}
@@ -651,7 +650,7 @@ export function AdminDashboardClient({
         </nav>
 
         {/* Sidebar Footer Actions */}
-        <div className="p-4 border-t border-white/10 space-y-2 bg-[#051029]">
+        <div className="p-4 border-t border-white/10 space-y-2 bg-[#121c46]">
           <Link
             href="/"
             target="_blank"
@@ -663,7 +662,7 @@ export function AdminDashboardClient({
           <button
             type="button"
             onClick={handleLogout}
-            className="apple-press w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-red-500/15 hover:bg-red-500/25 text-red-200 text-xs font-semibold transition-colors cursor-pointer"
+            className="apple-press w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#9e3b4b]/30 hover:bg-[#9e3b4b]/50 text-rose-100 text-xs font-semibold transition-colors cursor-pointer"
           >
             <LogOut className="w-3.5 h-3.5" />
             <span>Sign Out of Admin</span>
@@ -684,7 +683,7 @@ export function AdminDashboardClient({
               <Menu className="w-5 h-5" />
             </button>
             <div>
-              <h1 className="font-display font-bold text-lg sm:text-xl text-slate-900">
+              <h1 className="font-display font-bold text-lg sm:text-xl text-[#1b2a6b]">
                 {currentSectionMeta.label}
               </h1>
               <p className="text-xs text-slate-500 hidden sm:block">
@@ -695,7 +694,7 @@ export function AdminDashboardClient({
 
           <div className="flex items-center gap-2.5">
             {busy && (
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1559ed] bg-blue-50 px-3 py-1.5 rounded-xl">
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1b2a6b] bg-[#f0f3fa] px-3 py-1.5 rounded-xl">
                 <Loader2 className="w-3.5 h-3.5 animate-spin" />
                 Saving...
               </span>
@@ -703,10 +702,10 @@ export function AdminDashboardClient({
             <Link
               href="/"
               target="_blank"
-              className="apple-press hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold transition-colors"
+              className="apple-press hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-[#1b2a6b] text-xs font-semibold transition-colors"
             >
               <span>Open Website</span>
-              <ExternalLink className="w-3.5 h-3.5 text-[#1559ed]" />
+              <ExternalLink className="w-3.5 h-3.5 text-[#9e3b4b]" />
             </Link>
           </div>
         </header>
@@ -718,7 +717,7 @@ export function AdminDashboardClient({
               className={`flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-2xl border text-xs font-semibold ${
                 toast.type === "error"
                   ? "bg-red-950 text-red-100 border-red-700"
-                  : "bg-slate-900 text-white border-slate-700"
+                  : "bg-[#121c46] text-white border-white/15"
               }`}
             >
               {toast.type === "error" ? (
@@ -741,12 +740,12 @@ export function AdminDashboardClient({
                 <button
                   type="button"
                   onClick={() => setActiveSection("notices")}
-                  className="apple-press bg-white p-5 rounded-3xl border border-slate-200/80 shadow-xs text-left hover:border-blue-300 transition-all cursor-pointer"
+                  className="apple-press bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs text-left hover:border-slate-300 transition-all cursor-pointer"
                 >
-                  <div className="w-10 h-10 rounded-2xl bg-blue-50 text-[#1559ed] flex items-center justify-center mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#f0f3fa] text-[#1b2a6b] flex items-center justify-center mb-3">
                     <Bell className="w-5 h-5" />
                   </div>
-                  <p className="font-display font-bold text-2xl text-slate-900">
+                  <p className="font-display font-bold text-2xl text-[#1b2a6b]">
                     {notices.length}
                   </p>
                   <p className="text-xs font-semibold text-slate-500 mt-0.5">
@@ -757,12 +756,12 @@ export function AdminDashboardClient({
                 <button
                   type="button"
                   onClick={() => setActiveSection("calendar")}
-                  className="apple-press bg-white p-5 rounded-3xl border border-slate-200/80 shadow-xs text-left hover:border-amber-300 transition-all cursor-pointer"
+                  className="apple-press bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs text-left hover:border-slate-300 transition-all cursor-pointer"
                 >
-                  <div className="w-10 h-10 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#fbf3f4] text-[#9e3b4b] flex items-center justify-center mb-3">
                     <Calendar className="w-5 h-5" />
                   </div>
-                  <p className="font-display font-bold text-2xl text-slate-900">
+                  <p className="font-display font-bold text-2xl text-[#1b2a6b]">
                     {events.length}
                   </p>
                   <p className="text-xs font-semibold text-slate-500 mt-0.5">
@@ -773,12 +772,12 @@ export function AdminDashboardClient({
                 <button
                   type="button"
                   onClick={() => setActiveSection("gallery")}
-                  className="apple-press bg-white p-5 rounded-3xl border border-slate-200/80 shadow-xs text-left hover:border-emerald-300 transition-all cursor-pointer"
+                  className="apple-press bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs text-left hover:border-slate-300 transition-all cursor-pointer"
                 >
-                  <div className="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#f0f3fa] text-[#1b2a6b] flex items-center justify-center mb-3">
                     <Images className="w-5 h-5" />
                   </div>
-                  <p className="font-display font-bold text-2xl text-slate-900">
+                  <p className="font-display font-bold text-2xl text-[#1b2a6b]">
                     {gallery.length}
                   </p>
                   <p className="text-xs font-semibold text-slate-500 mt-0.5">
@@ -792,12 +791,12 @@ export function AdminDashboardClient({
                     setActiveSection("inbox");
                     setInboxSubtab("admissions");
                   }}
-                  className="apple-press bg-white p-5 rounded-3xl border border-slate-200/80 shadow-xs text-left hover:border-purple-300 transition-all cursor-pointer"
+                  className="apple-press bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs text-left hover:border-slate-300 transition-all cursor-pointer"
                 >
-                  <div className="w-10 h-10 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#fbf3f4] text-[#9e3b4b] flex items-center justify-center mb-3">
                     <Users className="w-5 h-5" />
                   </div>
-                  <p className="font-display font-bold text-2xl text-slate-900">
+                  <p className="font-display font-bold text-2xl text-[#1b2a6b]">
                     {admissions.length}
                   </p>
                   <p className="text-xs font-semibold text-slate-500 mt-0.5">
@@ -811,12 +810,12 @@ export function AdminDashboardClient({
                     setActiveSection("inbox");
                     setInboxSubtab("messages");
                   }}
-                  className="apple-press bg-white p-5 rounded-3xl border border-slate-200/80 shadow-xs text-left hover:border-rose-300 transition-all cursor-pointer"
+                  className="apple-press bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs text-left hover:border-slate-300 transition-all cursor-pointer"
                 >
-                  <div className="w-10 h-10 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#f0f3fa] text-[#1b2a6b] flex items-center justify-center mb-3">
                     <Inbox className="w-5 h-5" />
                   </div>
-                  <p className="font-display font-bold text-2xl text-slate-900">
+                  <p className="font-display font-bold text-2xl text-[#1b2a6b]">
                     {messages.length}
                   </p>
                   <p className="text-xs font-semibold text-slate-500 mt-0.5">
@@ -826,8 +825,8 @@ export function AdminDashboardClient({
               </div>
 
               {/* Quick Actions Bar */}
-              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs">
-                <h2 className="font-display font-bold text-xl text-slate-900 mb-1">
+              <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-xs">
+                <h2 className="font-display font-bold text-xl text-[#1b2a6b] mb-1">
                   What would you like to update today?
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-500 mb-5">
@@ -837,7 +836,7 @@ export function AdminDashboardClient({
                   <button
                     type="button"
                     onClick={() => setActiveSection("notices")}
-                    className="apple-press inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#1559ed] text-white text-xs font-semibold shadow-sm hover:bg-[#0b3ea8] cursor-pointer"
+                    className="apple-press inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#1b2a6b] text-white text-xs font-semibold shadow-xs hover:bg-[#142052] cursor-pointer"
                   >
                     <Plus className="w-4 h-4" />
                     Post a New Notice
@@ -845,7 +844,7 @@ export function AdminDashboardClient({
                   <button
                     type="button"
                     onClick={() => setActiveSection("calendar")}
-                    className="apple-press inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-amber-500 text-slate-950 text-xs font-bold shadow-sm hover:bg-amber-400 cursor-pointer"
+                    className="apple-press inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#9e3b4b] text-white text-xs font-bold shadow-xs hover:bg-[#842f3d] cursor-pointer"
                   >
                     <Calendar className="w-4 h-4" />
                     Add Academic Calendar Date
@@ -853,7 +852,7 @@ export function AdminDashboardClient({
                   <button
                     type="button"
                     onClick={() => setActiveSection("gallery")}
-                    className="apple-press inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-emerald-600 text-white text-xs font-semibold shadow-sm hover:bg-emerald-700 cursor-pointer"
+                    className="apple-press inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#1b2a6b] text-white text-xs font-semibold shadow-xs hover:bg-[#142052] cursor-pointer"
                   >
                     <Upload className="w-4 h-4" />
                     Upload Photos to Gallery
@@ -861,7 +860,7 @@ export function AdminDashboardClient({
                   <button
                     type="button"
                     onClick={() => setActiveSection("settings")}
-                    className="apple-press inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-slate-100 text-slate-800 text-xs font-semibold hover:bg-slate-200 cursor-pointer"
+                    className="apple-press inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-100 text-[#1b2a6b] text-xs font-semibold hover:bg-slate-200 cursor-pointer"
                   >
                     <Settings className="w-4 h-4" />
                     Edit Phone Numbers, Text &amp; Staff
@@ -872,21 +871,21 @@ export function AdminDashboardClient({
               {/* Instant Urgent Top Announcement Bar Editor */}
               <form
                 onSubmit={handleSaveSettings}
-                className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-5"
+                className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-5"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
-                    <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#1559ed]">
-                      <Sparkles className="w-3.5 h-3.5" /> Website Top Ribbon
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#9e3b4b]">
+                      Website Top Ribbon
                     </span>
-                    <h3 className="font-display font-bold text-xl text-slate-900 mt-0.5">
+                    <h3 className="font-display font-bold text-xl text-[#1b2a6b] mt-0.5">
                       Urgent Announcement Banner
                     </h3>
                     <p className="text-xs text-slate-500">
                       This banner appears at the very top of every page on the website for important announcements.
                     </p>
                   </div>
-                  <label className="inline-flex items-center gap-2.5 cursor-pointer bg-slate-100 px-4 py-2.5 rounded-2xl">
+                  <label className="inline-flex items-center gap-2.5 cursor-pointer bg-slate-100 px-4 py-2.5 rounded-xl">
                     <input
                       type="checkbox"
                       checked={Boolean(settings.urgentBannerActive)}
@@ -896,7 +895,7 @@ export function AdminDashboardClient({
                           urgentBannerActive: e.target.checked,
                         })
                       }
-                      className="w-4 h-4 accent-[#1559ed] rounded"
+                      className="w-4 h-4 accent-[#1b2a6b] rounded"
                     />
                     <span className="text-xs font-bold text-slate-800">
                       {settings.urgentBannerActive
@@ -921,7 +920,7 @@ export function AdminDashboardClient({
                         })
                       }
                       className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm"
-                      placeholder="e.g., Admissions Open for 2026/2027 — Apply Online Today!"
+                      placeholder="e.g., Admissions Open for 2026/2027. Apply Online Today!"
                     />
                   </div>
                   <div>
@@ -946,7 +945,7 @@ export function AdminDashboardClient({
                 <button
                   type="submit"
                   disabled={busy}
-                  className="apple-press inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[#071636] hover:bg-[#1559ed] text-white text-xs font-semibold transition-colors cursor-pointer"
+                  className="apple-press inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#1b2a6b] hover:bg-[#142052] text-white text-xs font-semibold transition-colors cursor-pointer"
                 >
                   <Save className="w-4 h-4" />
                   Save Top Banner
@@ -1029,7 +1028,7 @@ export function AdminDashboardClient({
                   </div>
 
                   <div className="flex items-end">
-                    <label className="flex items-center gap-2 cursor-pointer px-3.5 py-2.5 rounded-xl bg-amber-50 border border-amber-200 w-full">
+                    <label className="flex items-center gap-2 cursor-pointer px-3.5 py-2.5 rounded-xl bg-[#fbf3f4] border border-[#edd5d9] w-full">
                       <input
                         type="checkbox"
                         checked={noticeForm.isPinned}
@@ -1039,9 +1038,9 @@ export function AdminDashboardClient({
                             isPinned: e.target.checked,
                           })
                         }
-                        className="w-4 h-4 accent-amber-600"
+                        className="w-4 h-4 accent-[#9e3b4b]"
                       />
-                      <span className="text-xs font-bold text-amber-900">
+                      <span className="text-xs font-bold text-[#9e3b4b]">
                         Pin to Top
                       </span>
                     </label>
@@ -1122,7 +1121,7 @@ export function AdminDashboardClient({
                 <button
                   type="submit"
                   disabled={busy || uploadingImage}
-                  className="apple-press w-full py-3.5 rounded-2xl bg-[#1559ed] hover:bg-[#0b3ea8] text-white font-semibold text-xs shadow-lg shadow-blue-600/20 transition-colors cursor-pointer"
+                  className="apple-press w-full py-3.5 rounded-xl bg-[#9e3b4b] hover:bg-[#842f3d] text-white font-semibold text-xs shadow-sm transition-colors cursor-pointer"
                 >
                   {editingNoticeId
                     ? "Save Changes to Notice"
@@ -1132,27 +1131,27 @@ export function AdminDashboardClient({
 
               {/* Existing Notices List */}
               <div className="lg:col-span-7 space-y-4">
-                <h3 className="font-display font-bold text-lg text-slate-900">
+                <h3 className="font-display font-bold text-lg text-[#1b2a6b]">
                   All Notices on Notice Board ({notices.length})
                 </h3>
                 {notices.map((notice) => (
                   <div
                     key={notice.id}
-                    className="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-xs flex flex-col sm:flex-row gap-4 justify-between"
+                    className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col sm:flex-row gap-4 justify-between"
                   >
                     <div className="flex gap-4">
                       <img
                         src={notice.coverImage || "/images/school/DSC_0064.jpg"}
                         alt={notice.title}
-                        className="w-20 h-20 rounded-2xl object-cover shrink-0 bg-slate-100"
+                        className="w-20 h-20 rounded-xl object-cover shrink-0 bg-slate-100"
                       />
                       <div>
                         <div className="flex flex-wrap items-center gap-2 mb-1">
-                          <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-[#1559ed] text-[10px] font-bold uppercase">
+                          <span className="px-2.5 py-0.5 rounded-md bg-[#f0f3fa] text-[#1b2a6b] text-[10px] font-bold uppercase">
                             {notice.category}
                           </span>
                           {notice.isPinned && (
-                            <span className="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold">
+                            <span className="px-2.5 py-0.5 rounded-md bg-[#fbf3f4] text-[#9e3b4b] border border-[#edd5d9] text-[10px] font-bold">
                               Pinned
                             </span>
                           )}
@@ -1167,7 +1166,7 @@ export function AdminDashboardClient({
                             )}
                           </span>
                         </div>
-                        <h4 className="font-display font-bold text-base text-slate-900">
+                        <h4 className="font-display font-bold text-base text-[#1b2a6b]">
                           {notice.title}
                         </h4>
                         <p className="text-xs text-slate-600 mt-1 line-clamp-2">
@@ -1182,7 +1181,7 @@ export function AdminDashboardClient({
                         onClick={() => handleToggleNoticePin(notice)}
                         className={`apple-press px-3 py-1.5 rounded-xl text-xs font-semibold inline-flex items-center gap-1 cursor-pointer ${
                           notice.isPinned
-                            ? "bg-amber-100 text-amber-900"
+                            ? "bg-[#fbf3f4] text-[#9e3b4b]"
                             : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                         }`}
                       >
@@ -1204,7 +1203,7 @@ export function AdminDashboardClient({
                             published: Boolean(notice.published),
                           });
                         }}
-                        className="apple-press px-3 py-1.5 rounded-xl bg-blue-50 text-[#1559ed] hover:bg-blue-100 text-xs font-semibold inline-flex items-center gap-1 cursor-pointer"
+                        className="apple-press px-3 py-1.5 rounded-xl bg-[#f0f3fa] text-[#1b2a6b] hover:bg-slate-200 text-xs font-semibold inline-flex items-center gap-1 cursor-pointer"
                       >
                         <Edit3 className="w-3 h-3" /> Edit
                       </button>
@@ -1228,10 +1227,10 @@ export function AdminDashboardClient({
               {/* Add / Edit Date Form */}
               <form
                 onSubmit={handleSaveEvent}
-                className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-4 lg:sticky lg:top-24"
+                className="lg:col-span-5 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-4 lg:sticky lg:top-24"
               >
                 <div className="flex items-center justify-between">
-                  <h2 className="font-display font-bold text-xl text-slate-900">
+                  <h2 className="font-display font-bold text-xl text-[#1b2a6b]">
                     {editingEventId ? "Edit Calendar Date" : "Add Academic Date"}
                   </h2>
                   {editingEventId && (
@@ -1313,7 +1312,7 @@ export function AdminDashboardClient({
                           timeString: e.target.value,
                         })
                       }
-                      placeholder="8:00 AM – 2:30 PM"
+                      placeholder="8:00 AM - 2:30 PM"
                       className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm"
                     />
                   </div>
@@ -1353,7 +1352,7 @@ export function AdminDashboardClient({
                 <button
                   type="submit"
                   disabled={busy}
-                  className="apple-press w-full py-3.5 rounded-2xl bg-[#1559ed] hover:bg-[#0b3ea8] text-white font-semibold text-xs shadow-lg shadow-blue-600/20 transition-colors cursor-pointer"
+                  className="apple-press w-full py-3.5 rounded-xl bg-[#9e3b4b] hover:bg-[#842f3d] text-white font-semibold text-xs shadow-sm transition-colors cursor-pointer"
                 >
                   {editingEventId
                     ? "Update Calendar Date"
@@ -1363,7 +1362,7 @@ export function AdminDashboardClient({
 
               {/* Calendar Events List */}
               <div className="lg:col-span-7 space-y-4">
-                <h3 className="font-display font-bold text-lg text-slate-900">
+                <h3 className="font-display font-bold text-lg text-[#1b2a6b]">
                   Upcoming School Calendar Dates ({events.length})
                 </h3>
                 {events.map((ev) => {
@@ -1371,11 +1370,11 @@ export function AdminDashboardClient({
                   return (
                     <div
                       key={ev.id}
-                      className="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-xs flex items-center justify-between gap-4"
+                      className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex items-center justify-between gap-4"
                     >
                       <div className="flex items-center gap-4">
-                        <div className="w-14 h-14 rounded-2xl bg-[#071636] text-white flex flex-col items-center justify-center shrink-0">
-                          <span className="text-[10px] font-bold uppercase text-[#fbbf24]">
+                        <div className="w-14 h-14 rounded-xl bg-[#1b2a6b] text-white flex flex-col items-center justify-center shrink-0">
+                          <span className="text-[10px] font-bold uppercase text-[#f2bfc7]">
                             {d.toLocaleDateString("en-GB", { month: "short" })}
                           </span>
                           <span className="font-display font-bold text-lg leading-none">
@@ -1383,10 +1382,10 @@ export function AdminDashboardClient({
                           </span>
                         </div>
                         <div>
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#1559ed]">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#9e3b4b]">
                             {ev.category}
                           </span>
-                          <h4 className="font-display font-bold text-base text-slate-900">
+                          <h4 className="font-display font-bold text-base text-[#1b2a6b]">
                             {ev.title}
                           </h4>
                           <p className="text-xs text-slate-500 mt-0.5">
@@ -1411,7 +1410,7 @@ export function AdminDashboardClient({
                               category: ev.category || "Term Date",
                             });
                           }}
-                          className="apple-press p-2 rounded-xl bg-blue-50 text-[#1559ed] hover:bg-blue-100 cursor-pointer"
+                          className="apple-press p-2 rounded-xl bg-[#f0f3fa] text-[#1b2a6b] hover:bg-slate-200 cursor-pointer"
                         >
                           <Edit3 className="w-4 h-4" />
                         </button>
@@ -1436,9 +1435,9 @@ export function AdminDashboardClient({
               {/* Upload New Photo Box */}
               <form
                 onSubmit={handleAddGalleryPhoto}
-                className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs"
+                className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-xs"
               >
-                <h2 className="font-display font-bold text-xl text-slate-900 mb-1">
+                <h2 className="font-display font-bold text-xl text-[#1b2a6b] mb-1">
                   Upload New Photo to School Gallery
                 </h2>
                 <p className="text-xs text-slate-500 mb-6">
@@ -1448,7 +1447,7 @@ export function AdminDashboardClient({
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                   {/* Upload Dropzone */}
                   <div className="md:col-span-4">
-                    <label className="flex flex-col items-center justify-center h-44 rounded-2xl border-2 border-dashed border-blue-300 bg-blue-50/50 hover:bg-blue-50 transition-colors cursor-pointer p-4 text-center relative overflow-hidden">
+                    <label className="flex flex-col items-center justify-center h-44 rounded-2xl border-2 border-dashed border-slate-300 bg-[#f0f3fa]/50 hover:bg-[#f0f3fa] transition-colors cursor-pointer p-4 text-center relative overflow-hidden">
                       {galleryForm.imageUrl ? (
                         <img
                           src={galleryForm.imageUrl}
@@ -1456,7 +1455,7 @@ export function AdminDashboardClient({
                           className="absolute inset-0 w-full h-full object-cover"
                         />
                       ) : uploadingImage ? (
-                        <div className="flex flex-col items-center gap-2 text-[#1559ed]">
+                        <div className="flex flex-col items-center gap-2 text-[#1b2a6b]">
                           <Loader2 className="w-7 h-7 animate-spin" />
                           <span className="text-xs font-bold">
                             Uploading photo...
@@ -1464,7 +1463,7 @@ export function AdminDashboardClient({
                         </div>
                       ) : (
                         <>
-                          <Upload className="w-8 h-8 text-[#1559ed] mb-2" />
+                          <Upload className="w-8 h-8 text-[#1b2a6b] mb-2" />
                           <span className="text-xs font-bold text-slate-800">
                             Click to Choose Photo
                           </span>
@@ -1570,7 +1569,7 @@ export function AdminDashboardClient({
                               featured: e.target.checked,
                             })
                           }
-                          className="w-4 h-4 accent-[#1559ed]"
+                          className="w-4 h-4 accent-[#1b2a6b]"
                         />
                         <span className="text-xs font-semibold text-slate-700">
                           Feature this photo on Homepage
@@ -1580,7 +1579,7 @@ export function AdminDashboardClient({
                       <button
                         type="submit"
                         disabled={busy || uploadingImage}
-                        className="apple-press inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[#1559ed] hover:bg-[#0b3ea8] text-white text-xs font-semibold shadow-md cursor-pointer"
+                        className="apple-press inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#9e3b4b] hover:bg-[#842f3d] text-white text-xs font-semibold shadow-sm cursor-pointer"
                       >
                         <Plus className="w-4 h-4" />
                         Add Photo to Gallery
@@ -1593,7 +1592,7 @@ export function AdminDashboardClient({
               {/* Filter & Grid */}
               <div className="space-y-4">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <h3 className="font-display font-bold text-lg text-slate-900">
+                  <h3 className="font-display font-bold text-lg text-[#1b2a6b]">
                     Manage Gallery Photos ({filteredGallery.length})
                   </h3>
                   <div className="flex flex-wrap gap-1.5">
@@ -1604,7 +1603,7 @@ export function AdminDashboardClient({
                         onClick={() => setGalleryFilter(cat)}
                         className={`px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer ${
                           galleryFilter === cat
-                            ? "bg-[#1559ed] text-white"
+                            ? "bg-[#1b2a6b] text-white"
                             : "bg-white text-slate-600 border border-slate-200"
                         }`}
                       >
@@ -1627,13 +1626,13 @@ export function AdminDashboardClient({
                           className="w-full h-full object-cover"
                           loading="lazy"
                         />
-                        <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-slate-900/75 text-white text-[10px] font-semibold backdrop-blur-xs">
+                        <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md bg-[#121c46]/85 text-white text-[10px] font-semibold backdrop-blur-xs">
                           {item.category}
                         </span>
                       </div>
                       <div className="p-3.5 flex items-center justify-between gap-2">
                         <div className="min-w-0">
-                          <p className="font-bold text-xs text-slate-900 truncate">
+                          <p className="font-bold text-xs text-[#1b2a6b] truncate">
                             {item.title}
                           </p>
                           <p className="text-[11px] text-slate-500 truncate">
@@ -1647,7 +1646,7 @@ export function AdminDashboardClient({
                             title="Toggle Homepage Featured"
                             className={`p-1.5 rounded-lg cursor-pointer ${
                               item.featured
-                                ? "bg-amber-100 text-amber-600"
+                                ? "bg-[#fbf3f4] text-[#9e3b4b]"
                                 : "bg-slate-100 text-slate-400"
                             }`}
                           >
@@ -1679,7 +1678,7 @@ export function AdminDashboardClient({
                   onClick={() => setInboxSubtab("admissions")}
                   className={`px-4 py-2 rounded-xl text-xs font-bold cursor-pointer ${
                     inboxSubtab === "admissions"
-                      ? "bg-[#1559ed] text-white"
+                      ? "bg-[#1b2a6b] text-white"
                       : "text-slate-600 hover:bg-slate-100"
                   }`}
                 >
@@ -1690,7 +1689,7 @@ export function AdminDashboardClient({
                   onClick={() => setInboxSubtab("messages")}
                   className={`px-4 py-2 rounded-xl text-xs font-bold cursor-pointer ${
                     inboxSubtab === "messages"
-                      ? "bg-[#1559ed] text-white"
+                      ? "bg-[#1b2a6b] text-white"
                       : "text-slate-600 hover:bg-slate-100"
                   }`}
                 >
@@ -1701,7 +1700,7 @@ export function AdminDashboardClient({
                   onClick={() => setInboxSubtab("newsletter")}
                   className={`px-4 py-2 rounded-xl text-xs font-bold cursor-pointer ${
                     inboxSubtab === "newsletter"
-                      ? "bg-[#1559ed] text-white"
+                      ? "bg-[#1b2a6b] text-white"
                       : "text-slate-600 hover:bg-slate-100"
                   }`}
                 >
@@ -1712,8 +1711,8 @@ export function AdminDashboardClient({
               {inboxSubtab === "admissions" && (
                 <div className="space-y-4">
                   {admissions.length === 0 ? (
-                    <div className="bg-white rounded-3xl p-12 text-center border border-slate-200">
-                      <p className="font-display font-bold text-lg text-slate-800">
+                    <div className="bg-white rounded-2xl p-12 text-center border border-slate-200">
+                      <p className="font-display font-bold text-lg text-[#1b2a6b]">
                         No Online Admission Applications Yet
                       </p>
                       <p className="text-xs text-slate-500 mt-1">
@@ -1725,7 +1724,7 @@ export function AdminDashboardClient({
                     admissions.map((app) => (
                       <div
                         key={app.id}
-                        className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs flex flex-col lg:flex-row justify-between gap-6"
+                        className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs flex flex-col lg:flex-row justify-between gap-6"
                       >
                         <div className="space-y-2">
                           <div className="flex flex-wrap items-center gap-2">
@@ -1733,12 +1732,12 @@ export function AdminDashboardClient({
                               {app.referenceNumber}
                             </span>
                             <span
-                              className={`px-2.5 py-1 rounded-full text-xs font-bold ${
+                              className={`px-2.5 py-1 rounded-md text-xs font-bold ${
                                 app.status === "Admitted"
                                   ? "bg-emerald-100 text-emerald-800"
                                   : app.status === "Reviewed"
-                                    ? "bg-blue-100 text-blue-800"
-                                    : "bg-amber-100 text-amber-800"
+                                    ? "bg-[#f0f3fa] text-[#1b2a6b]"
+                                    : "bg-[#fbf3f4] text-[#9e3b4b]"
                               }`}
                             >
                               {app.status}
@@ -1751,15 +1750,15 @@ export function AdminDashboardClient({
                             </span>
                           </div>
 
-                          <h3 className="font-display font-bold text-xl text-slate-900">
+                          <h3 className="font-display font-bold text-xl text-[#1b2a6b]">
                             {app.studentFirstName} {app.studentLastName}{" "}
                             <span className="text-sm font-normal text-slate-500">
                               ({app.gender}, DOB: {app.dateOfBirth})
                             </span>
                           </h3>
 
-                          <p className="text-xs font-semibold text-[#1559ed]">
-                            Applying For: {app.levelApplying} — {app.gradeClass}
+                          <p className="text-xs font-semibold text-[#9e3b4b]">
+                            Applying For: {app.levelApplying} ({app.gradeClass})
                           </p>
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1 text-xs text-slate-600 pt-2">
@@ -1792,7 +1791,7 @@ export function AdminDashboardClient({
                           <div className="flex items-center gap-2">
                             <a
                               href={`tel:${app.guardianPhone}`}
-                              className="apple-press px-3 py-2 rounded-xl bg-emerald-50 text-emerald-700 text-xs font-semibold inline-flex items-center gap-1.5"
+                              className="apple-press px-3 py-2 rounded-xl bg-[#f0f3fa] text-[#1b2a6b] text-xs font-semibold inline-flex items-center gap-1.5"
                             >
                               <Phone className="w-3.5 h-3.5" /> Call Parent
                             </a>
@@ -1826,8 +1825,8 @@ export function AdminDashboardClient({
               {inboxSubtab === "messages" && (
                 <div className="space-y-4">
                   {messages.length === 0 ? (
-                    <div className="bg-white rounded-3xl p-12 text-center border border-slate-200">
-                      <p className="font-display font-bold text-lg text-slate-800">
+                    <div className="bg-white rounded-2xl p-12 text-center border border-slate-200">
+                      <p className="font-display font-bold text-lg text-[#1b2a6b]">
                         No Contact Messages Yet
                       </p>
                     </div>
@@ -1835,20 +1834,20 @@ export function AdminDashboardClient({
                     messages.map((msg) => (
                       <div
                         key={msg.id}
-                        className={`bg-white rounded-3xl p-6 border shadow-xs flex flex-col sm:flex-row justify-between gap-4 ${
+                        className={`bg-white rounded-2xl p-6 border shadow-xs flex flex-col sm:flex-row justify-between gap-4 ${
                           msg.isRead
                             ? "border-slate-200/80"
-                            : "border-blue-400"
+                            : "border-[#9e3b4b]"
                         }`}
                       >
                         <div>
                           <div className="flex items-center gap-2 mb-1">
                             {!msg.isRead && (
-                              <span className="px-2 py-0.5 rounded-full bg-[#1559ed] text-white text-[10px] font-bold">
+                              <span className="px-2 py-0.5 rounded-md bg-[#9e3b4b] text-white text-[10px] font-bold">
                                 NEW
                               </span>
                             )}
-                            <span className="text-xs font-bold text-slate-900">
+                            <span className="text-xs font-bold text-[#1b2a6b]">
                               {msg.subject}
                             </span>
                             <span className="text-xs text-slate-400">
@@ -1876,7 +1875,7 @@ export function AdminDashboardClient({
                           </button>
                           <a
                             href={`mailto:${msg.email}?subject=Re: ${msg.subject}`}
-                            className="px-3 py-1.5 rounded-xl bg-blue-50 text-[#1559ed] text-xs font-semibold inline-flex items-center gap-1"
+                            className="px-3 py-1.5 rounded-xl bg-[#f0f3fa] text-[#1b2a6b] text-xs font-semibold inline-flex items-center gap-1"
                           >
                             <Mail className="w-3.5 h-3.5" /> Reply
                           </a>
@@ -1888,8 +1887,8 @@ export function AdminDashboardClient({
               )}
 
               {inboxSubtab === "newsletter" && (
-                <div className="bg-white rounded-3xl p-6 border border-slate-200">
-                  <h3 className="font-display font-bold text-lg text-slate-900 mb-4">
+                <div className="bg-white rounded-2xl p-6 border border-slate-200">
+                  <h3 className="font-display font-bold text-lg text-[#1b2a6b] mb-4">
                     Parent Newsletter Subscribers ({initialSubscribers.length})
                   </h3>
                   {initialSubscribers.length === 0 ? (
@@ -1924,11 +1923,11 @@ export function AdminDashboardClient({
               {/* School General Settings & Copy Form */}
               <form
                 onSubmit={handleSaveSettings}
-                className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-6"
+                className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-6"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-4 gap-4">
                   <div>
-                    <h2 className="font-display font-bold text-xl text-slate-900">
+                    <h2 className="font-display font-bold text-xl text-[#1b2a6b]">
                       Website Text, Contact Phones &amp; Headteacher Welcome
                     </h2>
                     <p className="text-xs text-slate-500">
@@ -1938,7 +1937,7 @@ export function AdminDashboardClient({
                   <button
                     type="submit"
                     disabled={busy}
-                    className="apple-press inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[#1559ed] hover:bg-[#0b3ea8] text-white text-xs font-semibold shadow-md cursor-pointer self-start"
+                    className="apple-press inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#9e3b4b] hover:bg-[#842f3d] text-white text-xs font-semibold shadow-sm cursor-pointer self-start"
                   >
                     <Save className="w-4 h-4" />
                     Save All Website Settings
@@ -2121,9 +2120,9 @@ export function AdminDashboardClient({
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <form
                   onSubmit={handleSaveLeader}
-                  className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-4"
+                  className="lg:col-span-5 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-4"
                 >
-                  <h3 className="font-display font-bold text-lg text-slate-900">
+                  <h3 className="font-display font-bold text-lg text-[#1b2a6b]">
                     {editingLeaderId
                       ? "Edit Leadership Profile"
                       : "Add Leadership / Staff Member"}
@@ -2211,7 +2210,7 @@ export function AdminDashboardClient({
                   <button
                     type="submit"
                     disabled={busy}
-                    className="apple-press w-full py-3 rounded-2xl bg-[#1559ed] text-white text-xs font-semibold cursor-pointer"
+                    className="apple-press w-full py-3 rounded-xl bg-[#1b2a6b] hover:bg-[#142052] text-white text-xs font-semibold cursor-pointer"
                   >
                     {editingLeaderId ? "Update Profile" : "Add Staff Member"}
                   </button>
@@ -2221,19 +2220,19 @@ export function AdminDashboardClient({
                   {leaders.map((leader) => (
                     <div
                       key={leader.id}
-                      className="bg-white rounded-3xl p-4 border border-slate-200 flex items-center gap-4 justify-between"
+                      className="bg-white rounded-2xl p-4 border border-slate-200 flex items-center gap-4 justify-between"
                     >
                       <div className="flex items-center gap-3">
                         <img
                           src={leader.imageUrl}
                           alt={leader.name}
-                          className="w-14 h-14 rounded-2xl object-cover object-top"
+                          className="w-14 h-14 rounded-xl object-cover object-top"
                         />
                         <div>
-                          <p className="font-bold text-xs text-slate-900">
+                          <p className="font-bold text-xs text-[#1b2a6b]">
                             {leader.name}
                           </p>
-                          <p className="text-[11px] font-semibold text-[#1559ed]">
+                          <p className="text-[11px] font-semibold text-[#9e3b4b]">
                             {leader.role}
                           </p>
                         </div>
@@ -2251,7 +2250,7 @@ export function AdminDashboardClient({
                               sortOrder: leader.sortOrder || 1,
                             });
                           }}
-                          className="p-2 rounded-xl bg-blue-50 text-[#1559ed] cursor-pointer"
+                          className="p-2 rounded-xl bg-[#f0f3fa] text-[#1b2a6b] cursor-pointer"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
                         </button>

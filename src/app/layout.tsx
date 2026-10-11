@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const fraunces = Fraunces({
-  variable: "--font-serif",
   subsets: ["latin"],
   display: "swap",
 });
@@ -22,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "El-Shadai School | Let Your Light Shine — Tema, Ghana",
+    default: "El-Shadai School | Let Your Light Shine | Tema, Ghana",
     template: "%s | El-Shadai School",
   },
   description:
@@ -49,9 +43,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakarta.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}
+      className={`${plusJakarta.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="min-h-screen flex flex-col antialiased selection:bg-[#1559ed]/15 selection:text-[#1559ed]">
+      <body className="min-h-screen flex flex-col antialiased selection:bg-[#1b2a6b]/15 selection:text-[#1b2a6b]">
         {children}
       </body>
     </html>

@@ -4,7 +4,6 @@ import {
   FileCheck2,
   CheckCircle2,
   Phone,
-  Sparkles,
   ShieldCheck,
   Users,
   GraduationCap,
@@ -54,7 +53,7 @@ const ADMISSION_STEPS = [
 const REQUIREMENTS = [
   "Completed admission application form (Online or Office copy)",
   "Two (2) recent passport-sized photographs of the student",
-  "Photocopy of the child’s official Birth Certificate or Ghana Card",
+  "Photocopy of the child's official Birth Certificate or Ghana Card",
   "Most recent Terminal Report Card (for Primary & JHS transfer pupils)",
 ];
 
@@ -64,18 +63,17 @@ export default async function AdmissionPage() {
   return (
     <div className="space-y-20 pb-20">
       {/* Page Hero */}
-      <section className="bg-[#0b192c] text-white py-16 sm:py-20 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section className="bg-[#1b2a6b] text-white py-16 sm:py-20 border-b-4 border-[#9e3b4b]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 eyebrow-badge">
-              <Sparkles className="w-3.5 h-3.5" />
-              Welcome to Admissions
-            </span>
+            <p className="text-xs font-bold uppercase tracking-widest text-[#f2bfc7]">
+              Admissions & Enrollment
+            </p>
             <h1 className="display-heading text-4xl sm:text-5xl font-bold text-white">
               Join the El-Shadai School Family
             </h1>
-            <p className="text-slate-300 text-lg leading-relaxed">
-              At El-Shadai School in Tema, Ghana, we welcome new students every academic year. Our admissions process is simple, transparent, and supportive—designed to help families find the right fit for their children.
+            <p className="text-blue-100/90 text-lg leading-relaxed">
+              At El-Shadai School in Tema, Ghana, we welcome new students every academic year. Our admissions process is simple, transparent, and supportive, designed to help families find the right fit for their children.
             </p>
           </div>
         </div>
@@ -83,33 +81,33 @@ export default async function AdmissionPage() {
 
       {/* 5-Step Admissions Process */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto space-y-2 mb-12">
-          <span className="eyebrow-badge text-[#1559ed] block">
-            How to Apply
-          </span>
-          <h2 className="section-heading text-3xl sm:text-4xl font-bold text-[#0b192c]">
+        <div className="max-w-2xl space-y-2 mb-10">
+          <h2 className="section-heading text-3xl sm:text-4xl font-bold text-[#1b2a6b]">
             Our 5-Step Admissions Process
           </h2>
+          <p className="text-slate-600 text-base">
+            From your first campus inquiry to orientation day, here is how enrollment works.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-5 gap-5">
           {ADMISSION_STEPS.map((item) => (
             <div
               key={item.step}
-              className="apple-card rounded-3xl p-6 bg-white flex flex-col justify-between space-y-4"
+              className="apple-card rounded-2xl p-6 bg-white flex flex-col justify-between space-y-4"
             >
               <div className="space-y-3">
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-blue-50 text-[#1559ed] font-mono text-sm font-bold">
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[#f0f3fa] text-[#1b2a6b] font-mono text-sm font-bold">
                   {item.step}
                 </span>
-                <h3 className="text-lg font-bold text-[#0b192c]">
+                <h3 className="text-lg font-bold text-[#1b2a6b]">
                   {item.title}
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
                   {item.description}
                 </p>
               </div>
-              <div className="pt-2 border-t border-slate-100 flex items-center gap-1.5 text-xs font-semibold text-emerald-700">
+              <div className="pt-2 border-t border-slate-100 flex items-center gap-1.5 text-xs font-semibold text-[#9e3b4b]">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 <span>Step {item.step}</span>
               </div>
@@ -122,12 +120,9 @@ export default async function AdmissionPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-8 items-stretch">
           {/* Application Requirements */}
-          <div className="lg:col-span-5 apple-card rounded-3xl p-7 sm:p-9 bg-white flex flex-col justify-between space-y-6">
+          <div className="lg:col-span-5 apple-card rounded-2xl p-7 sm:p-9 bg-white flex flex-col justify-between space-y-6">
             <div className="space-y-4">
-              <span className="eyebrow-badge text-[#1559ed] block">
-                Checklist for Parents
-              </span>
-              <h2 className="section-heading text-2xl sm:text-3xl font-bold text-[#0b192c]">
+              <h2 className="section-heading text-2xl sm:text-3xl font-bold text-[#1b2a6b]">
                 Application Requirements
               </h2>
               <p className="text-sm text-slate-600">
@@ -138,9 +133,9 @@ export default async function AdmissionPage() {
                 {REQUIREMENTS.map((req) => (
                   <li
                     key={req}
-                    className="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/70"
+                    className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200/70"
                   >
-                    <FileCheck2 className="w-5 h-5 text-[#1559ed] shrink-0 mt-0.5" />
+                    <FileCheck2 className="w-5 h-5 text-[#1b2a6b] shrink-0 mt-0.5" />
                     <span className="text-sm font-semibold text-slate-800">
                       {req}
                     </span>
@@ -149,18 +144,18 @@ export default async function AdmissionPage() {
               </ul>
             </div>
 
-            <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200/80 flex items-center justify-between gap-4">
+            <div className="p-4 rounded-xl bg-[#fbf3f4] border border-[#edd5d9] flex items-center justify-between gap-4">
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-amber-900">
+                <p className="text-xs font-bold uppercase tracking-wider text-[#9e3b4b]">
                   Admissions Help Desk
                 </p>
-                <p className="text-sm font-semibold text-slate-800 mt-0.5">
+                <p className="text-sm font-semibold text-[#1b2a6b] mt-0.5">
                   {settings.phonePrimary}
                 </p>
               </div>
               <a
                 href={`tel:${settings.phonePrimary.replace(/\s+/g, "")}`}
-                className="apple-press inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-amber-500 text-[#0b192c] text-xs font-bold"
+                className="apple-press inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#9e3b4b] hover:bg-[#842f3d] text-white text-xs font-bold"
               >
                 <Phone className="w-3.5 h-3.5" />
                 <span>Call Office</span>
@@ -170,63 +165,63 @@ export default async function AdmissionPage() {
 
           {/* Tuition & Fee Tiers */}
           <div className="lg:col-span-7 grid sm:grid-cols-3 gap-5">
-            <div className="apple-card rounded-3xl p-6 bg-white flex flex-col justify-between space-y-4">
+            <div className="apple-card rounded-2xl p-6 bg-white flex flex-col justify-between space-y-4">
               <div className="space-y-3">
-                <div className="w-11 h-11 rounded-2xl bg-amber-500/15 text-amber-700 flex items-center justify-center">
+                <div className="w-11 h-11 rounded-xl bg-[#fbf3f4] text-[#9e3b4b] flex items-center justify-center">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
-                <span className="text-xs font-mono uppercase tracking-wider text-amber-700 font-semibold block">
+                <span className="text-xs font-mono uppercase tracking-wider text-[#9e3b4b] font-semibold block">
                   Registration
                 </span>
-                <h3 className="text-xl font-bold text-[#0b192c]">
+                <h3 className="text-xl font-bold text-[#1b2a6b]">
                   {settings.admissionFeeTitle}
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
                   {settings.admissionFeeText}
                 </p>
               </div>
-              <div className="pt-3 border-t border-slate-100 text-xs font-bold text-emerald-700">
-                ✓ Free Admission Form
+              <div className="pt-3 border-t border-slate-100 text-xs font-bold text-[#9e3b4b]">
+                Free Admission Form
               </div>
             </div>
 
-            <div className="apple-card rounded-3xl p-6 bg-white flex flex-col justify-between space-y-4">
+            <div className="apple-card rounded-2xl p-6 bg-white flex flex-col justify-between space-y-4">
               <div className="space-y-3">
-                <div className="w-11 h-11 rounded-2xl bg-blue-50 text-[#1559ed] flex items-center justify-center">
+                <div className="w-11 h-11 rounded-xl bg-[#f0f3fa] text-[#1b2a6b] flex items-center justify-center">
                   <Users className="w-6 h-6" />
                 </div>
-                <span className="text-xs font-mono uppercase tracking-wider text-[#1559ed] font-semibold block">
-                  Creche – Basic 6
+                <span className="text-xs font-mono uppercase tracking-wider text-[#1b2a6b] font-semibold block">
+                  Creche to Basic 6
                 </span>
-                <h3 className="text-xl font-bold text-[#0b192c]">
+                <h3 className="text-xl font-bold text-[#1b2a6b]">
                   Preschool & Primary Tuition
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
                   {settings.primaryTuitionText}
                 </p>
               </div>
-              <div className="pt-3 border-t border-slate-100 text-xs font-bold text-[#1559ed]">
-                ✓ Flexible Termly Plans
+              <div className="pt-3 border-t border-slate-100 text-xs font-bold text-[#1b2a6b]">
+                Flexible Termly Plans
               </div>
             </div>
 
-            <div className="apple-card rounded-3xl p-6 bg-white flex flex-col justify-between space-y-4">
+            <div className="apple-card rounded-2xl p-6 bg-white flex flex-col justify-between space-y-4">
               <div className="space-y-3">
-                <div className="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
+                <div className="w-11 h-11 rounded-xl bg-[#f0f3fa] text-[#1b2a6b] flex items-center justify-center">
                   <GraduationCap className="w-6 h-6" />
                 </div>
-                <span className="text-xs font-mono uppercase tracking-wider text-emerald-700 font-semibold block">
-                  JHS 1 – JHS 3
+                <span className="text-xs font-mono uppercase tracking-wider text-[#1b2a6b] font-semibold block">
+                  JHS 1 to JHS 3
                 </span>
-                <h3 className="text-xl font-bold text-[#0b192c]">
+                <h3 className="text-xl font-bold text-[#1b2a6b]">
                   Junior High Tuition
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
                   {settings.jhsTuitionText}
                 </p>
               </div>
-              <div className="pt-3 border-t border-slate-100 text-xs font-bold text-emerald-700">
-                ✓ BECE & STEM Focus
+              <div className="pt-3 border-t border-slate-100 text-xs font-bold text-[#1b2a6b]">
+                BECE & STEM Focus
               </div>
             </div>
           </div>

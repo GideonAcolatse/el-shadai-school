@@ -51,33 +51,30 @@ export function Footer({
       });
       const data = await res.json();
       if (res.ok) {
-        setStatusMessage(data.message || "Subscribed to school updates!");
+        setStatusMessage(data.message || "Subscribed to school updates.");
         setEmail("");
       } else {
         setStatusMessage(data.error || "Could not subscribe right now.");
       }
     } catch {
-      setStatusMessage("Subscribed! Thank you for staying connected.");
+      setStatusMessage("Subscribed. Thank you for staying connected.");
     } finally {
       setSubmitting(false);
     }
   }
 
   return (
-    <footer className="bg-[#0b192c] text-slate-300 border-t border-white/10 mt-auto">
+    <footer className="bg-[#121c46] text-slate-300 border-t border-white/10 mt-auto">
       {/* Top Newsletter Banner */}
-      <div className="border-b border-white/10 bg-gradient-to-r from-[#0b192c] via-[#112645] to-[#0b192c]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-14">
+      <div className="border-b border-white/10 bg-[#1b2a6b]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7">
-              <span className="eyebrow-badge text-amber-400 block mb-2">
-                Parent & Community Updates
-              </span>
-              <h2 className="section-heading text-2xl sm:text-3xl font-bold text-white">
-                Subscribe to Our School Newsletter
+              <h2 className="font-display text-2xl sm:text-3xl font-bold text-white">
+                Subscribe to School Updates
               </h2>
-              <p className="text-slate-300 mt-2 max-w-2xl text-sm sm:text-base">
-                Stay updated with term resumption dates, PTA notices, examination schedules, and student achievements at {schoolName}.
+              <p className="text-slate-200 mt-1.5 max-w-2xl text-sm sm:text-base">
+                Receive term resumption dates, PTA notices, examination schedules, and campus news from {schoolName}.
               </p>
             </div>
             <div className="lg:col-span-5">
@@ -94,20 +91,20 @@ export function Footer({
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address..."
-                  className="flex-1 px-4 py-3.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  placeholder="Enter your email address"
+                  className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-white/40"
                 />
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="apple-press inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-[#0b192c] font-bold text-sm shadow-sm cursor-pointer disabled:opacity-60"
+                  className="apple-press inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#9e3b4b] hover:bg-[#842f3d] text-white font-semibold text-sm shadow-xs cursor-pointer disabled:opacity-60"
                 >
                   <Send className="w-4 h-4" />
                   <span>{submitting ? "Joining..." : "Subscribe"}</span>
                 </button>
               </form>
               {statusMessage && (
-                <p className="mt-2.5 text-xs text-amber-300 flex items-center gap-1.5">
+                <p className="mt-2.5 text-xs text-white flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 shrink-0" />
                   <span>{statusMessage}</span>
                 </p>
@@ -134,13 +131,13 @@ export function Footer({
                 <h3 className="text-lg font-bold text-white leading-tight">
                   {schoolName}
                 </h3>
-                <p className="text-xs font-medium text-amber-400">
-                  “{motto}”
+                <p className="text-xs font-semibold text-[#e6a2ad]">
+                  {motto}
                 </p>
               </div>
             </div>
             <p className="text-sm text-slate-300 leading-relaxed">
-              El-Shadai School in Tema, Ghana, is dedicated to providing quality private education across Preschool, Primary, and Junior High School that inspires academic excellence, discipline, and leadership.
+              El-Shadai School in Tema Newtown Manhean provides quality private education across Preschool, Primary, and Junior High School, building academic excellence, discipline, and moral character.
             </p>
             <div className="pt-2 flex items-center gap-3">
               {facebookUrl && (
@@ -150,15 +147,15 @@ export function Footer({
                   rel="noreferrer"
                   className="apple-press inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-xs font-semibold text-white"
                 >
-                  <span>Facebook Community</span>
-                  <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Facebook Page</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-[#e6a2ad]" />
                 </a>
               )}
               <Link
                 href="/admin"
-                className="apple-press inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-400/30 text-xs font-semibold text-amber-300"
+                className="apple-press inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#9e3b4b]/25 hover:bg-[#9e3b4b]/35 border border-[#e6a2ad]/30 text-xs font-semibold text-white"
               >
-                <ShieldCheck className="w-3.5 h-3.5" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#e6a2ad]" />
                 <span>Admin CMS</span>
               </Link>
             </div>
@@ -166,7 +163,7 @@ export function Footer({
 
           {/* Column 2: Quick Navigation */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
               Quick Links
             </h4>
             <ul className="space-y-2.5 text-sm">
@@ -180,7 +177,7 @@ export function Footer({
                   href="/admission"
                   className="hover:text-white transition-colors"
                 >
-                  Admissions & Fees
+                  Admissions &amp; Fees
                 </Link>
               </li>
               <li>
@@ -196,7 +193,7 @@ export function Footer({
                   href="/about"
                   className="hover:text-white transition-colors"
                 >
-                  About & Leadership
+                  About &amp; Leadership
                 </Link>
               </li>
               <li>
@@ -204,7 +201,7 @@ export function Footer({
                   href="/notice"
                   className="hover:text-white transition-colors"
                 >
-                  Notice Board & Calendar
+                  Notice Board &amp; Calendar
                 </Link>
               </li>
               <li>
@@ -212,7 +209,7 @@ export function Footer({
                   href="/contact"
                   className="hover:text-white transition-colors"
                 >
-                  Contact & Map
+                  Contact &amp; Map
                 </Link>
               </li>
             </ul>
@@ -221,41 +218,41 @@ export function Footer({
           {/* Column 3: Academic Programs & Top Instructors */}
           <div className="lg:col-span-3 space-y-4">
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 mb-3">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
                 Academic Departments
               </h4>
               <ul className="space-y-2 text-sm text-slate-300">
-                <li>Preschool (Creche, Nursery & KG)</li>
-                <li>Primary School (Basic 1 – Basic 6)</li>
-                <li>Junior High School (JHS 1 – JHS 3)</li>
-                <li>Practical STEM & Computing Lab</li>
+                <li>Preschool (Creche, Nursery &amp; KG)</li>
+                <li>Primary School (Basic 1 to Basic 6)</li>
+                <li>Junior High School (JHS 1 to JHS 3)</li>
+                <li>Practical STEM &amp; Computing Lab</li>
               </ul>
             </div>
 
             <div className="pt-3 border-t border-white/10">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 mb-2 flex items-center gap-1.5">
-                <Award className="w-3.5 h-3.5" />
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-2 flex items-center gap-1.5">
+                <Award className="w-3.5 h-3.5 text-[#e6a2ad]" />
                 Featured Instructors
               </h4>
               <ul className="space-y-1 text-xs text-slate-300">
-                <li>• Desmond Dorsu</li>
-                <li>• Kidwell McWallace Africanus</li>
+                <li>Desmond Dorsu</li>
+                <li>Kidwell McWallace Africanus</li>
               </ul>
             </div>
           </div>
 
           {/* Column 4: Direct Contact Details */}
           <div className="lg:col-span-3 space-y-3.5">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
               Contact Our Campus
             </h4>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-1" />
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-[#e6a2ad] shrink-0 mt-1" />
                 <span>{address}</span>
-              </div>
-              <div className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 text-amber-400 shrink-0 mt-1" />
+              </li>
+              <li className="flex items-start gap-2.5">
+                <Phone className="w-4 h-4 text-[#e6a2ad] shrink-0 mt-1" />
                 <div className="space-y-1">
                   <a
                     href={`tel:${phonePrimary.replace(/\s+/g, "")}`}
@@ -270,44 +267,42 @@ export function Footer({
                     {phoneSecondary}
                   </a>
                 </div>
-              </div>
-              <div className="flex items-start gap-2.5">
-                <Mail className="w-4 h-4 text-amber-400 shrink-0 mt-1" />
+              </li>
+              <li className="flex items-start gap-2.5">
+                <Mail className="w-4 h-4 text-[#e6a2ad] shrink-0 mt-1" />
                 <div className="space-y-1">
                   <a
                     href={`mailto:${emailInfo}`}
-                    className="block hover:text-white transition-colors break-all"
+                    className="block hover:text-white transition-colors"
                   >
                     {emailInfo}
                   </a>
                   <a
                     href={`mailto:${emailAdmissions}`}
-                    className="block hover:text-white transition-colors break-all text-xs text-slate-400"
+                    className="block hover:text-white transition-colors text-xs text-slate-400"
                   >
                     {emailAdmissions}
                   </a>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
 
         {/* Bottom Copyright Bar */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>
-            Copyright © {new Date().getFullYear()} —{" "}
-            <strong className="text-slate-200">EL-SHADAI SCHOOL</strong> | DEVELOPED BY{" "}
-            <strong className="text-amber-400">GIDEON KUDJOE ACOLATSE</strong>
+            © {new Date().getFullYear()} {schoolName}, Tema Newtown Manhean. All rights reserved.
           </p>
-          <div className="flex items-center gap-5">
-            <Link href="/about" className="hover:text-slate-200">
-              Privacy & School Policy
+          <div className="flex items-center gap-6">
+            <Link href="/admission" className="hover:text-white transition-colors">
+              Online Admissions
             </Link>
-            <Link href="/admission" className="hover:text-slate-200">
-              Admissions Terms
+            <Link href="/notice" className="hover:text-white transition-colors">
+              School Calendar
             </Link>
-            <Link href="/admin" className="hover:text-amber-300 font-medium">
-              Staff Dashboard
+            <Link href="/admin" className="hover:text-white transition-colors">
+              Staff Login
             </Link>
           </div>
         </div>

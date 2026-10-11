@@ -11,7 +11,6 @@ import {
   Phone,
   ArrowRight,
   ShieldCheck,
-  Sparkles,
   Calendar,
 } from "lucide-react";
 
@@ -59,35 +58,34 @@ export function Navbar({
     <>
       {/* Top Urgent Notice & Key Date Bar */}
       {urgentBannerActive && urgentBannerText && (
-        <div className="bg-[#0b192c] text-white text-xs sm:text-sm border-b border-white/10 relative z-50">
+        <div className="bg-[#1b2a6b] text-white text-xs sm:text-sm border-b border-white/10 relative z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2.5 min-w-0">
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/30 text-[11px] font-semibold tracking-wide uppercase shrink-0">
-                <Sparkles className="w-3 h-3" />
-                Notice
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-md bg-[#9e3b4b] text-white text-[11px] font-bold tracking-wide uppercase shrink-0">
+                Announcement
               </span>
-              <p className="truncate font-medium text-slate-100">
+              <p className="truncate font-medium text-white/95">
                 {urgentBannerText}
               </p>
               {urgentBannerLink && (
                 <Link
                   href={urgentBannerLink}
-                  className="apple-press inline-flex items-center gap-1 text-amber-300 hover:text-amber-200 font-semibold underline underline-offset-4 shrink-0 ml-1"
+                  className="apple-press inline-flex items-center gap-1 text-white hover:text-white/80 font-semibold underline underline-offset-4 shrink-0 ml-1"
                 >
-                  Learn more
+                  Details
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               )}
             </div>
 
-            <div className="hidden lg:flex items-center gap-5 text-xs text-slate-300 shrink-0">
+            <div className="hidden lg:flex items-center gap-5 text-xs text-slate-200 shrink-0">
               {nextEventTitle && nextEventDate && (
                 <Link
                   href="/notice#calendar"
-                  className="apple-press flex items-center gap-1.5 text-slate-200 hover:text-amber-300 transition-colors"
+                  className="apple-press flex items-center gap-1.5 text-slate-200 hover:text-white transition-colors"
                 >
-                  <Calendar className="w-3.5 h-3.5 text-amber-400" />
-                  <span className="font-mono text-[11px] text-amber-300">
+                  <Calendar className="w-3.5 h-3.5 text-[#e6a2ad]" />
+                  <span className="font-mono text-[11px] text-white font-semibold">
                     {nextEventDate}:
                   </span>
                   <span className="font-medium">{nextEventTitle}</span>
@@ -97,14 +95,14 @@ export function Navbar({
                 href={`tel:${phonePrimary.replace(/\s+/g, "")}`}
                 className="apple-press flex items-center gap-1.5 hover:text-white transition-colors"
               >
-                <Phone className="w-3.5 h-3.5 text-amber-400" />
+                <Phone className="w-3.5 h-3.5 text-[#e6a2ad]" />
                 <span>{phonePrimary}</span>
               </a>
               <Link
                 href="/admin"
                 className="apple-press inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/10 hover:bg-white/15 text-white font-medium transition-colors"
               >
-                <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#e6a2ad]" />
                 Staff Portal
               </Link>
             </div>
@@ -112,7 +110,7 @@ export function Navbar({
         </div>
       )}
 
-      {/* Apple Translucent Sticky Navigation Header */}
+      {/* Sticky Navigation Header */}
       <header className="sticky top-0 z-40 apple-glass">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           {/* Brand Logo */}
@@ -128,19 +126,19 @@ export function Navbar({
               />
             </div>
             <div>
-              <span className="block font-bold text-lg sm:text-xl tracking-tight text-[#0b192c] leading-none">
+              <span className="block font-bold text-lg sm:text-xl tracking-tight text-[#1b2a6b] leading-none">
                 {schoolName}
               </span>
-              <span className="block text-xs font-medium text-amber-700 mt-1 tracking-wide">
-                “{motto}”
+              <span className="block text-xs font-semibold text-[#9e3b4b] mt-1 tracking-wide">
+                {motto}
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation Pills */}
+          {/* Desktop Navigation */}
           <nav
             aria-label="Main Navigation"
-            className="hidden md:flex items-center gap-1 bg-slate-900/[0.04] p-1.5 rounded-full border border-slate-900/[0.06]"
+            className="hidden md:flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-xl border border-slate-200/70"
           >
             {NAV_LINKS.map((item) => {
               const isActive =
@@ -151,9 +149,9 @@ export function Navbar({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`apple-press relative px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+                  className={`apple-press relative px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
                     isActive
-                      ? "text-[#0b192c]"
+                      ? "text-[#1b2a6b]"
                       : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
@@ -161,12 +159,12 @@ export function Navbar({
                     <motion.span
                       layoutId="nav-pill"
                       transition={SPRING_CRITICAL}
-                      className="absolute inset-0 bg-white rounded-full shadow-xs border border-slate-200/70 -z-10"
+                      className="absolute inset-0 bg-white rounded-lg shadow-xs border border-slate-200/80 -z-10"
                     />
                   )}
                   <span className="flex items-center gap-1.5">
                     {item.href === "/notice" && (
-                      <Bell className="w-3.5 h-3.5 text-amber-600" />
+                      <Bell className="w-3.5 h-3.5 text-[#9e3b4b]" />
                     )}
                     {item.label}
                   </span>
@@ -175,11 +173,11 @@ export function Navbar({
             })}
           </nav>
 
-          {/* Desktop CTA Buttons */}
+          {/* Desktop CTA Button */}
           <div className="hidden md:flex items-center gap-3">
             <Link
               href="/admission"
-              className="apple-press inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1559ed] hover:bg-[#1045bd] text-white text-sm font-semibold shadow-sm shadow-blue-600/20"
+              className="apple-press inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1b2a6b] hover:bg-[#142052] text-white text-sm font-semibold shadow-xs"
             >
               <span>Apply Now</span>
               <ArrowRight className="w-4 h-4" />
@@ -190,15 +188,21 @@ export function Navbar({
           <button
             type="button"
             onClick={() => setMobileOpen((prev) => !prev)}
-            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-label={
+              mobileOpen ? "Close navigation menu" : "Open navigation menu"
+            }
             aria-expanded={mobileOpen}
             className="apple-press md:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-slate-200 text-slate-800 shadow-2xs"
           >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
           </button>
         </div>
 
-        {/* Interruptible Spring Mobile Drawer */}
+        {/* Mobile Drawer */}
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
@@ -221,7 +225,7 @@ export function Navbar({
                       onClick={() => setMobileOpen(false)}
                       className={`apple-press flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold ${
                         isActive
-                          ? "bg-blue-50 text-[#1559ed]"
+                          ? "bg-[#f0f3fa] text-[#1b2a6b]"
                           : "text-slate-700 hover:bg-slate-50"
                       }`}
                     >
@@ -235,7 +239,7 @@ export function Navbar({
                   <Link
                     href="/admission"
                     onClick={() => setMobileOpen(false)}
-                    className="apple-press flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#1559ed] text-white font-semibold text-sm shadow-sm"
+                    className="apple-press flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#1b2a6b] text-white font-semibold text-sm shadow-xs"
                   >
                     Apply Now
                   </Link>
@@ -244,7 +248,7 @@ export function Navbar({
                     onClick={() => setMobileOpen(false)}
                     className="apple-press flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-100 text-slate-800 font-semibold text-sm"
                   >
-                    <ShieldCheck className="w-4 h-4 text-amber-600" />
+                    <ShieldCheck className="w-4 h-4 text-[#9e3b4b]" />
                     Admin CMS
                   </Link>
                 </div>

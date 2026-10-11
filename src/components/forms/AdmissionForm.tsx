@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Send, CheckCircle2, Sparkles, AlertCircle } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 
 const GRADE_OPTIONS: Record<string, string[]> = {
   Preschool: ["Creche", "Nursery 1", "Nursery 2", "Kindergarten 1 (KG 1)", "Kindergarten 2 (KG 2)"],
@@ -75,24 +75,24 @@ export function AdmissionForm() {
 
   if (referenceNumber) {
     return (
-      <div className="rounded-3xl bg-emerald-50/90 border border-emerald-200 p-8 sm:p-10 text-center space-y-4">
-        <div className="w-16 h-16 rounded-2xl bg-emerald-600 text-white flex items-center justify-center mx-auto shadow-md">
+      <div className="rounded-2xl bg-[#f0f3fa] border border-slate-200 p-8 sm:p-10 text-center space-y-4">
+        <div className="w-16 h-16 rounded-2xl bg-[#1b2a6b] text-white flex items-center justify-center mx-auto shadow-md">
           <CheckCircle2 className="w-8 h-8" />
         </div>
-        <span className="eyebrow-badge text-emerald-800 block">
+        <p className="text-xs font-bold uppercase tracking-widest text-[#9e3b4b]">
           Application Received
-        </span>
-        <h3 className="section-heading text-2xl sm:text-3xl font-bold text-[#0b192c]">
-          Thank You for Applying to El-Shadai School!
+        </p>
+        <h3 className="section-heading text-2xl sm:text-3xl font-bold text-[#1b2a6b]">
+          Thank You for Applying to El-Shadai School
         </h3>
         <p className="text-slate-600 max-w-lg mx-auto text-sm sm:text-base">
           Your online admission application has been recorded in our school portal. Our Admissions Office will contact you shortly to schedule a campus visit and placement assessment.
         </p>
-        <div className="inline-block px-5 py-3 rounded-2xl bg-white border border-emerald-200 shadow-2xs">
+        <div className="inline-block px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-2xs">
           <span className="text-xs text-slate-500 block">
             Application Reference Code
           </span>
-          <span className="font-mono text-lg font-bold text-[#0b192c]">
+          <span className="font-mono text-lg font-bold text-[#1b2a6b]">
             {referenceNumber}
           </span>
         </div>
@@ -100,7 +100,7 @@ export function AdmissionForm() {
           <button
             type="button"
             onClick={() => setReferenceNumber(null)}
-            className="apple-press px-6 py-2.5 rounded-full bg-[#0b192c] text-white text-xs font-semibold cursor-pointer"
+            className="apple-press px-6 py-2.5 rounded-xl bg-[#1b2a6b] text-white text-xs font-semibold cursor-pointer"
           >
             Submit Another Student Application
           </button>
@@ -112,14 +112,13 @@ export function AdmissionForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="apple-card rounded-3xl p-6 sm:p-10 bg-white space-y-8"
+      className="apple-card rounded-2xl p-6 sm:p-10 bg-white space-y-8"
     >
       <div className="border-b border-slate-200/80 pb-5">
-        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#1559ed] mb-1">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Online Enrollment Portal</span>
-        </div>
-        <h3 className="section-heading text-2xl sm:text-3xl font-bold text-[#0b192c]">
+        <p className="text-xs font-bold uppercase tracking-wider text-[#9e3b4b] mb-1">
+          Online Enrollment Portal
+        </p>
+        <h3 className="section-heading text-2xl sm:text-3xl font-bold text-[#1b2a6b]">
           Student Admission Application Form
         </h3>
         <p className="text-sm text-slate-600 mt-1">
@@ -128,7 +127,7 @@ export function AdmissionForm() {
       </div>
 
       {errorMsg && (
-        <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-center gap-2.5">
+        <div className="p-4 rounded-xl bg-[#fbf3f4] border border-[#edd5d9] text-[#9e3b4b] text-sm flex items-center gap-2.5">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{errorMsg}</span>
         </div>
@@ -149,7 +148,7 @@ export function AdmissionForm() {
               name="studentFirstName"
               required
               placeholder="e.g. Kwame"
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1559ed]"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1b2a6b]"
             />
           </div>
           <div>
@@ -160,7 +159,7 @@ export function AdmissionForm() {
               type="text"
               name="studentMiddleName"
               placeholder="Optional"
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1559ed]"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1b2a6b]"
             />
           </div>
           <div>
@@ -172,7 +171,7 @@ export function AdmissionForm() {
               name="studentLastName"
               required
               placeholder="e.g. Mensah"
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1559ed]"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1b2a6b]"
             />
           </div>
         </div>
@@ -186,7 +185,7 @@ export function AdmissionForm() {
               type="date"
               name="dateOfBirth"
               required
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1559ed]"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1b2a6b]"
             />
           </div>
           <div>
@@ -196,7 +195,7 @@ export function AdmissionForm() {
             <select
               name="gender"
               required
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1559ed]"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1b2a6b]"
             >
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -218,7 +217,7 @@ export function AdmissionForm() {
             <select
               value={levelApplying}
               onChange={(e) => handleLevelChange(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1559ed]"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1b2a6b]"
             >
               {Object.keys(GRADE_OPTIONS).map((lvl) => (
                 <option key={lvl} value={lvl}>
@@ -234,7 +233,7 @@ export function AdmissionForm() {
             <select
               value={gradeClass}
               onChange={(e) => setGradeClass(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1559ed]"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1b2a6b]"
             >
               {(GRADE_OPTIONS[levelApplying] || []).map((cls) => (
                 <option key={cls} value={cls}>
@@ -252,8 +251,8 @@ export function AdmissionForm() {
           <input
             type="text"
             name="previousSchool"
-            placeholder="Enter previous school name & last class completed (if applicable)"
-            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1559ed]"
+            placeholder="Enter previous school name and last class completed (if applicable)"
+            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1b2a6b]"
           />
         </div>
       </div>
@@ -273,7 +272,7 @@ export function AdmissionForm() {
               name="guardianName"
               required
               placeholder="Full Name of Parent or Guardian"
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1559ed]"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1b2a6b]"
             />
           </div>
           <div>
@@ -282,7 +281,7 @@ export function AdmissionForm() {
             </label>
             <select
               name="guardianRelation"
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1559ed]"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1b2a6b]"
             >
               <option value="Parent">Parent (Mother / Father)</option>
               <option value="Guardian">Legal Guardian</option>
@@ -301,7 +300,7 @@ export function AdmissionForm() {
               name="guardianPhone"
               required
               placeholder="e.g. +233 24 472 1828"
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1559ed]"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1b2a6b]"
             />
           </div>
           <div>
@@ -313,7 +312,7 @@ export function AdmissionForm() {
               name="guardianEmail"
               required
               placeholder="parent@example.com"
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1559ed]"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1b2a6b]"
             />
           </div>
         </div>
@@ -328,7 +327,7 @@ export function AdmissionForm() {
               name="residentialAddress"
               required
               placeholder="House No., Street, or Community (e.g. Tema Newtown Manhean)"
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1559ed]"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1b2a6b]"
             />
           </div>
           <div>
@@ -340,7 +339,7 @@ export function AdmissionForm() {
               name="city"
               defaultValue="Tema"
               required
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1559ed]"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1b2a6b]"
             />
           </div>
         </div>
@@ -353,7 +352,7 @@ export function AdmissionForm() {
             name="medicalNotes"
             rows={3}
             placeholder="Share any allergies, medical notes, or questions for our admissions team..."
-            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1559ed]"
+            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1b2a6b]"
           />
         </div>
       </div>
@@ -363,7 +362,7 @@ export function AdmissionForm() {
           <input
             type="checkbox"
             required
-            className="mt-0.5 rounded border-slate-300 text-[#1559ed] focus:ring-[#1559ed]"
+            className="mt-0.5 rounded border-slate-300 text-[#1b2a6b] focus:ring-[#1b2a6b]"
           />
           <span>
             I confirm that the information provided is accurate and agree to abide by the policies of El-Shadai School.
@@ -373,7 +372,7 @@ export function AdmissionForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="apple-press inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#1559ed] hover:bg-[#1045bd] text-white font-bold text-sm shadow-lg shadow-blue-600/20 cursor-pointer disabled:opacity-60 shrink-0"
+          className="apple-press inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[#9e3b4b] hover:bg-[#842f3d] text-white font-bold text-sm shadow-sm cursor-pointer disabled:opacity-60 shrink-0"
         >
           <Send className="w-4 h-4" />
           <span>{submitting ? "Submitting Application..." : "Submit Application"}</span>

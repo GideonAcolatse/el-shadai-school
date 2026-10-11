@@ -20,33 +20,34 @@ export default async function NoticePage() {
   return (
     <div className="bg-[#f8fafc] min-h-screen pb-24">
       {/* Page Hero */}
-      <section className="relative bg-[#071636] text-white pt-16 pb-24 overflow-hidden">
+      <section className="relative bg-[#1b2a6b] text-white pt-16 pb-24 overflow-hidden border-b-4 border-[#9e3b4b]">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-15"
           style={{ backgroundImage: "url(/images/school/DSC_0738.jpg)" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#071636]/90 via-[#071636]/95 to-[#071636]" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-[#fbbf24] text-xs font-bold uppercase tracking-widest mb-5">
-            <Bell className="w-3.5 h-3.5" />
-            Official Communications
-          </div>
-          <h1 className="font-display font-bold text-4xl sm:text-5xl text-white max-w-3xl mx-auto">
-            School Notice Board &amp; Key Dates
-          </h1>
-          <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
-            Stay informed on school resumptions, examination schedules, PTA general meetings, and special campus events at El-Shadai School.
-          </p>
-          <div className="mt-6 inline-flex items-center gap-4 text-xs text-slate-300 bg-white/5 border border-white/10 px-4 py-2 rounded-full">
-            <span className="inline-flex items-center gap-1.5">
-              <Bell className="w-3.5 h-3.5 text-[#38bdf8]" />
-              {notices.length} Published Notices
-            </span>
-            <span className="text-white/20">•</span>
-            <span className="inline-flex items-center gap-1.5">
-              <Calendar className="w-3.5 h-3.5 text-[#fbbf24]" />
-              {events.length} Upcoming Calendar Dates
-            </span>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1b2a6b]/90 via-[#1b2a6b]/95 to-[#121c46]" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl space-y-4">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#f2bfc7]">
+              Official Communications
+            </p>
+            <h1 className="display-heading font-bold text-4xl sm:text-5xl text-white">
+              School Notice Board &amp; Key Dates
+            </h1>
+            <p className="text-blue-100/90 text-base sm:text-lg leading-relaxed">
+              Stay informed on school resumptions, examination schedules, PTA general meetings, and special campus events at El-Shadai School.
+            </p>
+            <div className="pt-2 inline-flex flex-wrap items-center gap-4 text-xs text-blue-100 bg-white/10 border border-white/15 px-4 py-2 rounded-xl">
+              <span className="inline-flex items-center gap-1.5">
+                <Bell className="w-3.5 h-3.5 text-[#f2bfc7]" />
+                {notices.length} Published Notices
+              </span>
+              <span className="text-white/30">•</span>
+              <span className="inline-flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5 text-[#f2bfc7]" />
+                {events.length} Upcoming Calendar Dates
+              </span>
+            </div>
           </div>
         </div>
       </section>

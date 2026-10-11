@@ -7,21 +7,21 @@ const DEFAULT_SETTINGS = {
   schoolName: "El-Shadai School",
   motto: "Let Your Light Shine",
   heroBadge: "Tema Newtown Manhean • Preschool, Primary & JHS",
-  heroTitle: "El-Shadai School — Let Your Light Shine",
+  heroTitle: "El-Shadai School: Let Your Light Shine",
   heroSubtitle:
     "Providing quality private education in Tema, Ghana, to nurture future leaders with academic excellence, discipline, and moral integrity.",
   heroImage: "/images/school/DSC_0064.jpg",
   aboutSummary:
-    "At El-Shadai School in Tema, Ghana, we are dedicated to nurturing young minds through academic excellence, discipline, and strong moral values. Since our founding, the school has remained committed to equipping children with the knowledge, skills, and character they need to succeed in today’s world.\n\nOur holistic approach to education combines quality teaching, co-curricular activities, and personal development, ensuring every child discovers their potential and shines brightly in life and society. With a caring environment and passionate teachers, we prepare students not just for exams, but for leadership and lifelong success.",
+    "At El-Shadai School in Tema, Ghana, we are dedicated to nurturing young minds through academic excellence, discipline, and strong moral values. Since our founding, the school has remained committed to equipping children with the knowledge, skills, and character they need to succeed in today's world.\n\nOur holistic approach to education combines quality teaching, co-curricular activities, and personal development, ensuring every child discovers their potential and shines brightly in life and society. With a caring environment and passionate teachers, we prepare students not just for exams, but for leadership and lifelong success.",
   mission:
     "To nurture and educate children by providing a holistic learning experience that blends academic excellence with moral and social responsibility.",
   vision:
-    "To be one of Ghana’s leading private schools, recognized for shaping future leaders who excel both in knowledge and character.",
+    "To be one of Ghana's leading private schools, recognized for shaping future leaders who excel both in knowledge and character.",
   coreValues: "Excellence, Discipline, Integrity, Respect, and Leadership",
   headteacherName: "Mrs. Elisabeth Afua Quarshie Ackwornu",
   headteacherRole: "Headteacher",
   headteacherMessage:
-    "At El-Shadai School, we do more than teach subjects—we shape futures. We believe that with the right guidance, discipline, and inspiration, every child has the potential to shine brightly. We warmly welcome parents and guardians to join us in this journey of raising tomorrow’s leaders.",
+    "At El-Shadai School, we do more than teach subjects; we shape futures. We believe that with the right guidance, discipline, and inspiration, every child has the potential to shine brightly. We warmly welcome parents and guardians to join us in this journey of raising tomorrow's leaders.",
   headteacherImage: "/images/school/leader-headteacher.jpg",
   address: "Tema Newtown Manhean, Greater Accra Region, Ghana",
   phonePrimary: "+233 (0) 244 72 1828",
@@ -29,7 +29,7 @@ const DEFAULT_SETTINGS = {
   emailInfo: "info@elshadaischool.com",
   emailAdmissions: "admissions@elshadaischool.com",
   admissionFeeTitle: "One-Time Admission",
-  admissionFeeText: "Free Admission — Welcoming new families with transparent, zero-fee admission registration.",
+  admissionFeeText: "Free Admission: Welcoming new families with transparent, zero-fee admission registration.",
   primaryTuitionText: "Affordable and tailored termly payment plans designed to support families across Preschool and Primary.",
   jhsTuitionText: "Competitive fees with intensive BECE preparation, computing, and practical STEM skills development.",
   facebookUrl: "https://web.facebook.com/patience.ankamahaddo.1",
@@ -38,7 +38,7 @@ const DEFAULT_SETTINGS = {
   youtubeUrl: "#",
   urgentBannerActive: true,
   urgentBannerText:
-    "Admissions Open for the 2026/2027 Academic Year (Preschool, Primary & JHS) — Free Admission Available!",
+    "Admissions Open for the 2026/2027 Academic Year (Preschool, Primary & JHS). Free Admission Available!",
   urgentBannerLink: "/admission",
 };
 
@@ -91,7 +91,7 @@ const NOTICES = [
     slug: "2026-2027-academic-year-admissions-open",
     category: "Admissions",
     excerpt:
-      "El-Shadai School warmly welcomes applications for Preschool (Creche, Nursery, KG), Primary (Basic 1–6), and Junior High School (JHS 1–3) with Free One-Time Admission.",
+      "El-Shadai School warmly welcomes applications for Preschool (Creche, Nursery, KG), Primary (Basic 1 to 6), and Junior High School (JHS 1 to 3) with Free One-Time Admission.",
     content:
       "We are delighted to announce that admissions for the upcoming academic year are officially open at El-Shadai School, Tema Newtown Manhean.\n\nOur admissions process is simple, transparent, and supportive:\n1. Complete the online application form on our website or pick up a form at the school administration office.\n2. Provide two recent passport-sized photographs, a copy of the child's birth certificate, and the most recent terminal report card (for transfer pupils).\n3. Schedule a placement assessment and brief family interview.\n\nEnjoy Free One-Time Admission and flexible termly tuition payment plans. Call +233 (0) 244 72 1828 or +233 (0) 244 13 4854 for inquiries.",
     coverImage: "/images/school/DSC_0064.jpg",
@@ -171,7 +171,7 @@ const EVENTS = [
     title: "Term Resumption & New Student Orientation",
     description: "Campus opens for all Preschool, Primary, and JHS students with morning assembly and new family orientation.",
     eventDate: new Date("2026-10-19T07:30:00Z"),
-    timeString: "7:30 AM – 2:30 PM",
+    timeString: "7:30 AM - 2:30 PM",
     location: "El-Shadai Campus, Tema Newtown Manhean",
     category: "Term Date",
     isFeatured: true,
@@ -180,7 +180,7 @@ const EVENTS = [
     title: "PTA General Meeting & Open Day",
     description: "Interactive session between parents, teachers, and school leadership to review student progress.",
     eventDate: new Date("2026-10-30T09:00:00Z"),
-    timeString: "9:00 AM – 12:00 PM",
+    timeString: "9:00 AM - 12:00 PM",
     location: "Main Assembly Hall, Tema Newtown Manhean",
     category: "PTA",
     isFeatured: true,
@@ -189,7 +189,7 @@ const EVENTS = [
     title: "Mid-Term Continuous Assessment Week",
     description: "Mid-term class assessments and practical computing/science evaluations across Primary and JHS.",
     eventDate: new Date("2026-11-09T08:00:00Z"),
-    timeString: "8:00 AM – 3:00 PM",
+    timeString: "8:00 AM - 3:00 PM",
     location: "All Classrooms & STEM Lab",
     category: "Exam",
     isFeatured: true,
@@ -198,7 +198,7 @@ const EVENTS = [
     title: "Annual Cultural & Creative Arts Day",
     description: "Traditional dress, cultural drumming & dance, debate competition, and creative projects exhibition.",
     eventDate: new Date("2026-11-20T09:00:00Z"),
-    timeString: "9:00 AM – 2:30 PM",
+    timeString: "9:00 AM - 2:30 PM",
     location: "School Forecourt, Tema Newtown Manhean",
     category: "Sports & Culture",
     isFeatured: true,
@@ -207,7 +207,7 @@ const EVENTS = [
     title: "JHS 3 Mock Examinations (BECE Prep)",
     description: "Comprehensive mock examinations for Junior High School candidates with personalized teacher feedback.",
     eventDate: new Date("2026-12-01T08:00:00Z"),
-    timeString: "8:00 AM – 3:30 PM",
+    timeString: "8:00 AM - 3:30 PM",
     location: "JHS Examination Block",
     category: "Exam",
     isFeatured: true,
@@ -216,7 +216,7 @@ const EVENTS = [
     title: "End-of-Term Examinations & Speech Day",
     description: "Final term assessments followed by our end-of-term awards, report card collection, and vacation.",
     eventDate: new Date("2026-12-14T08:00:00Z"),
-    timeString: "8:00 AM – 1:00 PM",
+    timeString: "8:00 AM - 1:00 PM",
     location: "El-Shadai School Campus",
     category: "Term Date",
     isFeatured: true,
@@ -240,10 +240,10 @@ const GALLERY_ITEMS = [
   { title: "Collaborative Student Life", caption: "Friendship, teamwork, and joyful learning across campus.", category: "Events & Celebrations", imageUrl: "/images/school/DSC_0771.jpg", featured: true, sortOrder: 13 },
 
   // Leadership Portraits in Gallery
-  { title: "Mrs. Elisabeth Afua Quarshie Ackwornu", caption: "Headteacher — El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/DSC_9320.jpg", featured: false, sortOrder: 14 },
-  { title: "Mrs. Patience Ankamah Addo", caption: "Director — El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/leader-director.jpg", featured: false, sortOrder: 15 },
-  { title: "Mr. Nii Fosu Baddoo", caption: "Administrator — El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/leader-administrator.jpg", featured: false, sortOrder: 16 },
-  { title: "Mrs. Sylvia Sackey", caption: "Bursar — El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/leader-bursar.jpg", featured: false, sortOrder: 17 },
+  { title: "Mrs. Elisabeth Afua Quarshie Ackwornu", caption: "Headteacher, El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/DSC_9320.jpg", featured: false, sortOrder: 14 },
+  { title: "Mrs. Patience Ankamah Addo", caption: "Director, El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/leader-director.jpg", featured: false, sortOrder: 15 },
+  { title: "Mr. Nii Fosu Baddoo", caption: "Administrator, El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/leader-administrator.jpg", featured: false, sortOrder: 16 },
+  { title: "Mrs. Sylvia Sackey", caption: "Bursar, El-Shadai School", category: "Teachers & Leadership", imageUrl: "/images/school/leader-bursar.jpg", featured: false, sortOrder: 17 },
 
   // Additional High-Resolution DSLR Campus Photos (August & September 2025)
   { title: "Interactive Lesson in Progress", caption: "Engaging classroom instruction and student participation.", category: "Classroom Learning", imageUrl: "/images/school/DSC_0068.jpg", featured: false, sortOrder: 18 },
@@ -273,7 +273,7 @@ const GALLERY_ITEMS = [
   { title: "School Spirit & Fellowship", caption: "Together we learn, grow, and shine.", category: "Events & Celebrations", imageUrl: "/images/school/DSC_0734.jpg", featured: false, sortOrder: 42 },
   { title: "Assembly Presentation", caption: "Students presenting during morning devotion and assembly.", category: "Creative Arts & Culture", imageUrl: "/images/school/DSC_0735.jpg", featured: false, sortOrder: 43 },
   { title: "Campus Celebration", caption: "Memorable moments from our academic calendar.", category: "Events & Celebrations", imageUrl: "/images/school/DSC_0736.jpg", featured: false, sortOrder: 44 },
-  { title: "Shining Bright Together", caption: "El-Shadai School — Let Your Light Shine.", category: "Events & Celebrations", imageUrl: "/images/school/DSC_0737.jpg", featured: false, sortOrder: 45 },
+  { title: "Shining Bright Together", caption: "El-Shadai School: Let Your Light Shine.", category: "Events & Celebrations", imageUrl: "/images/school/DSC_0737.jpg", featured: false, sortOrder: 45 },
 ];
 
 async function main() {
