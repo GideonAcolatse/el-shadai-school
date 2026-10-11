@@ -547,7 +547,7 @@ export function AdminDashboardClient({
     {
       id: "overview",
       label: "Dashboard Overview",
-      subtitle: "Quick stats & Urgent Top Banner",
+      subtitle: "Quick stats & Pop-Up Announcement",
       icon: LayoutDashboard,
     },
     {
@@ -919,7 +919,7 @@ export function AdminDashboardClient({
                 </div>
               </div>
 
-              {/* Instant Urgent Top Announcement Bar Editor */}
+              {/* Pop-Up Announcement Modal Editor */}
               <form
                 onSubmit={handleSaveSettings}
                 className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-5"
@@ -927,16 +927,16 @@ export function AdminDashboardClient({
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
                     <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#9e3b4b]">
-                      Website Top Ribbon
+                      Visitor Pop-Up
                     </span>
                     <h3 className="font-display font-bold text-xl text-[#1b2a6b] mt-0.5">
-                      Urgent Announcement Banner
+                      Announcement Pop-Up Modal
                     </h3>
                     <p className="text-xs text-slate-500">
-                      This banner appears at the very top of every page on the website for important announcements.
+                      When active, this pop-up appears automatically when visitors open the website so they cannot miss the announcement. They can dismiss it to continue browsing.
                     </p>
                   </div>
-                  <label className="inline-flex items-center gap-2.5 cursor-pointer bg-slate-100 px-4 py-2.5 rounded-xl">
+                  <label className="inline-flex items-center gap-2.5 cursor-pointer bg-slate-100 px-4 py-2.5 rounded-xl shrink-0">
                     <input
                       type="checkbox"
                       checked={Boolean(settings.urgentBannerActive)}
@@ -950,8 +950,8 @@ export function AdminDashboardClient({
                     />
                     <span className="text-xs font-bold text-slate-800">
                       {settings.urgentBannerActive
-                        ? "Banner Active"
-                        : "Banner Hidden"}
+                        ? "Pop-Up Active"
+                        : "Pop-Up Hidden"}
                     </span>
                   </label>
                 </div>
@@ -959,7 +959,7 @@ export function AdminDashboardClient({
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="md:col-span-2">
                     <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Banner Announcement Text
+                      Announcement Message *
                     </label>
                     <input
                       type="text"
@@ -976,7 +976,7 @@ export function AdminDashboardClient({
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Action Link (Optional)
+                      Action Button Link (Optional)
                     </label>
                     <input
                       type="text"
@@ -999,7 +999,7 @@ export function AdminDashboardClient({
                   className="apple-press inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#1b2a6b] hover:bg-[#142052] text-white text-xs font-semibold transition-colors cursor-pointer"
                 >
                   <Save className="w-4 h-4" />
-                  Save Top Banner
+                  Save Pop-Up Announcement
                 </button>
               </form>
             </div>
