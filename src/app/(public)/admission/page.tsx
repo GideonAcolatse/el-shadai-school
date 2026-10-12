@@ -118,10 +118,10 @@ export default async function AdmissionPage() {
 
       {/* Requirements & Tuition Breakdown */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-8 items-stretch">
+        <div className="grid lg:grid-cols-12 gap-8 items-start">
           {/* Application Requirements */}
-          <div className="lg:col-span-5 apple-card rounded-2xl p-7 sm:p-9 bg-white flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
+          <div className="lg:col-span-5 apple-card rounded-2xl p-6 sm:p-7 bg-white space-y-5">
+            <div className="space-y-3">
               <h2 className="section-heading text-2xl sm:text-3xl font-bold text-[#1b2a6b]">
                 Application Requirements
               </h2>
@@ -129,11 +129,11 @@ export default async function AdmissionPage() {
                 To complete enrollment at the school office after submitting your application, please prepare the following documents:
               </p>
 
-              <ul className="space-y-3 pt-2">
+              <ul className="space-y-2.5 pt-1">
                 {REQUIREMENTS.map((req) => (
                   <li
                     key={req}
-                    className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200/70"
+                    className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/70"
                   >
                     <FileCheck2 className="w-5 h-5 text-[#1b2a6b] shrink-0 mt-0.5" />
                     <span className="text-sm font-semibold text-slate-800">
@@ -164,64 +164,70 @@ export default async function AdmissionPage() {
           </div>
 
           {/* Tuition & Fee Tiers */}
-          <div className="lg:col-span-7 grid sm:grid-cols-3 gap-5">
-            <div className="apple-card rounded-2xl p-6 bg-white flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <div className="w-11 h-11 rounded-xl bg-[#fbf3f4] text-[#9e3b4b] flex items-center justify-center">
-                  <ShieldCheck className="w-6 h-6" />
+          <div className="lg:col-span-7 flex flex-col gap-4">
+            <div className="apple-card rounded-2xl p-5 bg-white flex items-start gap-4">
+              <div className="w-11 h-11 rounded-xl bg-[#fbf3f4] text-[#9e3b4b] flex items-center justify-center shrink-0 mt-0.5">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <div className="flex-1 min-w-0 space-y-1.5">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="text-xs font-mono uppercase tracking-wider text-[#9e3b4b] font-semibold">
+                    Registration
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-md bg-[#fbf3f4] text-[#9e3b4b] text-xs font-bold">
+                    Free Admission Form
+                  </span>
                 </div>
-                <span className="text-xs font-mono uppercase tracking-wider text-[#9e3b4b] font-semibold block">
-                  Registration
-                </span>
-                <h3 className="text-xl font-bold text-[#1b2a6b]">
-                  {settings.admissionFeeTitle}
+                <h3 className="text-lg font-bold text-[#1b2a6b] leading-snug">
+                  {settings.admissionFeeTitle.replace(/—/g, "-")}
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  {settings.admissionFeeText}
+                  {settings.admissionFeeText.replace(/—/g, ": ")}
                 </p>
-              </div>
-              <div className="pt-3 border-t border-slate-100 text-xs font-bold text-[#9e3b4b]">
-                Free Admission Form
               </div>
             </div>
 
-            <div className="apple-card rounded-2xl p-6 bg-white flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <div className="w-11 h-11 rounded-xl bg-[#f0f3fa] text-[#1b2a6b] flex items-center justify-center">
-                  <Users className="w-6 h-6" />
+            <div className="apple-card rounded-2xl p-5 bg-white flex items-start gap-4">
+              <div className="w-11 h-11 rounded-xl bg-[#f0f3fa] text-[#1b2a6b] flex items-center justify-center shrink-0 mt-0.5">
+                <Users className="w-5 h-5" />
+              </div>
+              <div className="flex-1 min-w-0 space-y-1.5">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="text-xs font-mono uppercase tracking-wider text-[#1b2a6b] font-semibold">
+                    Creche to Basic 6
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-md bg-[#f0f3fa] text-[#1b2a6b] text-xs font-bold">
+                    Flexible Termly Plans
+                  </span>
                 </div>
-                <span className="text-xs font-mono uppercase tracking-wider text-[#1b2a6b] font-semibold block">
-                  Creche to Basic 6
-                </span>
-                <h3 className="text-xl font-bold text-[#1b2a6b]">
-                  Preschool & Primary Tuition
+                <h3 className="text-lg font-bold text-[#1b2a6b] leading-snug">
+                  Preschool &amp; Primary Tuition
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  {settings.primaryTuitionText}
+                  {settings.primaryTuitionText.replace(/—/g, ": ")}
                 </p>
-              </div>
-              <div className="pt-3 border-t border-slate-100 text-xs font-bold text-[#1b2a6b]">
-                Flexible Termly Plans
               </div>
             </div>
 
-            <div className="apple-card rounded-2xl p-6 bg-white flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <div className="w-11 h-11 rounded-xl bg-[#f0f3fa] text-[#1b2a6b] flex items-center justify-center">
-                  <GraduationCap className="w-6 h-6" />
+            <div className="apple-card rounded-2xl p-5 bg-white flex items-start gap-4">
+              <div className="w-11 h-11 rounded-xl bg-[#f0f3fa] text-[#1b2a6b] flex items-center justify-center shrink-0 mt-0.5">
+                <GraduationCap className="w-5 h-5" />
+              </div>
+              <div className="flex-1 min-w-0 space-y-1.5">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="text-xs font-mono uppercase tracking-wider text-[#1b2a6b] font-semibold">
+                    JHS 1 to JHS 3
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-md bg-[#f0f3fa] text-[#1b2a6b] text-xs font-bold">
+                    BECE &amp; STEM Focus
+                  </span>
                 </div>
-                <span className="text-xs font-mono uppercase tracking-wider text-[#1b2a6b] font-semibold block">
-                  JHS 1 to JHS 3
-                </span>
-                <h3 className="text-xl font-bold text-[#1b2a6b]">
+                <h3 className="text-lg font-bold text-[#1b2a6b] leading-snug">
                   Junior High Tuition
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  {settings.jhsTuitionText}
+                  {settings.jhsTuitionText.replace(/—/g, ": ")}
                 </p>
-              </div>
-              <div className="pt-3 border-t border-slate-100 text-xs font-bold text-[#1b2a6b]">
-                BECE & STEM Focus
               </div>
             </div>
           </div>
