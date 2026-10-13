@@ -17,6 +17,8 @@ import {
   ShieldCheck,
   Palette,
   Compass,
+  Star,
+  MessageSquare,
 } from "lucide-react";
 import {
   getSiteSettings,
@@ -50,7 +52,8 @@ export default async function HomePage() {
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Copy Column */}
             <div className="lg:col-span-7 space-y-5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#fbf3f4] border border-[#edd5d9] text-[#9e3b4b]">
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#fbf3f4] border border-[#edd5d9] text-[#9e3b4b]">
+                <span className="w-2 h-2 rounded-full bg-[#9e3b4b] animate-pulse shrink-0" />
                 <span className="text-xs font-bold uppercase tracking-wider">
                   {settings.heroBadge.replace(/—/g, "•")}
                 </span>
@@ -64,7 +67,7 @@ export default async function HomePage() {
                 {settings.heroSubtitle.replace(/—/g, ", ")}
               </p>
 
-              <div className="flex flex-wrap items-center gap-3.5 pt-2">
+              <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Link
                   href="/admission"
                   className="apple-press inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#1b2a6b] hover:bg-[#142052] text-white font-semibold text-sm sm:text-base shadow-xs"
@@ -74,10 +77,20 @@ export default async function HomePage() {
                 </Link>
                 <Link
                   href="/about"
-                  className="apple-press inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-[#121c46] font-semibold text-sm sm:text-base border border-slate-300"
+                  className="apple-press inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-[#121c46] font-semibold text-sm sm:text-base border border-slate-300"
                 >
                   <span>About Our School</span>
                 </Link>
+                <a
+                  href={process.env.NEXT_PUBLIC_PORTAL_URL || "http://elshadaisch-fees.test"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="apple-press inline-flex items-center gap-1.5 px-4 py-3.5 rounded-xl bg-slate-100 hover:bg-slate-200/80 text-slate-700 hover:text-slate-900 font-semibold text-sm border border-slate-200"
+                  title="Parent & Staff Portal"
+                >
+                  <span>Portal</span>
+                  <ArrowRight className="w-3.5 h-3.5 opacity-60" />
+                </a>
               </div>
 
               {/* Clean Key Facts Strip */}
@@ -638,6 +651,11 @@ export default async function HomePage() {
                 className="rounded-xl p-6 bg-white border border-slate-200/80 flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-3">
+                  <div className="flex items-center gap-1 text-[#f59e0b]">
+                    {[...Array(5)].map((_, s) => (
+                      <Star key={s} className="w-4 h-4 fill-[#f59e0b]" />
+                    ))}
+                  </div>
                   <Quote className="w-6 h-6 text-[#9e3b4b]/50" />
                   <p className="text-slate-700 text-sm leading-relaxed">
                     “{item.quote}”
@@ -703,6 +721,50 @@ export default async function HomePage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* 10. Visit Campus & Enrollment CTA */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl bg-gradient-to-br from-[#1b2a6b] via-[#162359] to-[#121c46] text-white p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-lg border border-white/10">
+          <div className="absolute top-0 right-0 -mt-12 -mr-12 w-96 h-96 bg-white/[0.04] rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10 max-w-3xl space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-white text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-[#f59e0b] animate-pulse" />
+              <span>Admissions Open for 2026/2027</span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+              Give Your Child the Foundation for Lifelong Excellence
+            </h2>
+            <p className="text-slate-200 text-base sm:text-lg max-w-2xl leading-relaxed">
+              Visit our campus in Tema Newtown Manhean, meet our teachers, and explore our learning facilities. Free admission forms are available now.
+            </p>
+            <div className="flex flex-wrap items-center gap-3.5 pt-4">
+              <Link
+                href="/admission"
+                className="apple-press inline-flex items-center gap-2 px-7 py-4 rounded-xl bg-[#9e3b4b] hover:bg-[#842f3d] text-white font-bold text-sm sm:text-base shadow-sm"
+              >
+                <span>Apply for Admission</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <a
+                href={`https://wa.me/233244721828?text=${encodeURIComponent("Hello El-Shadai School, I would like to schedule a campus visit and inquire about admissions.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="apple-press inline-flex items-center gap-2 px-6 py-4 rounded-xl bg-white/15 hover:bg-white/25 text-white font-semibold text-sm sm:text-base border border-white/20 backdrop-blur-md"
+              >
+                <MessageSquare className="w-4 h-4 text-emerald-400" />
+                <span>Chat on WhatsApp</span>
+              </a>
+              <Link
+                href="/contact"
+                className="apple-press inline-flex items-center gap-2 px-6 py-4 rounded-xl bg-white hover:bg-slate-100 text-[#121c46] font-semibold text-sm sm:text-base"
+              >
+                <MapPin className="w-4 h-4 text-[#9e3b4b]" />
+                <span>Visit Campus</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>
