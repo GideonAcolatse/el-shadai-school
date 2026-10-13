@@ -21,6 +21,7 @@ export function AdmissionForm() {
   const [gradeClass, setGradeClass] = useState("Basic 1 (Primary 1)");
   const [submitting, setSubmitting] = useState(false);
   const [referenceNumber, setReferenceNumber] = useState<string | null>(null);
+  const [applicantName, setApplicantName] = useState("");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   function handleLevelChange(newLevel: string) {
@@ -35,6 +36,10 @@ export function AdmissionForm() {
     setErrorMsg(null);
 
     const formData = new FormData(e.currentTarget);
+    const firstName = String(formData.get("studentFirstName") || "").trim();
+    const lastName = String(formData.get("studentLastName") || "").trim();
+    const fullName = [firstName, lastName].filter(Boolean).join(" ");
+
     const payload = {
       studentFirstName: formData.get("studentFirstName"),
       studentMiddleName: formData.get("studentMiddleName"),
@@ -63,6 +68,7 @@ export function AdmissionForm() {
       if (!res.ok) {
         setErrorMsg(data.error || "Please check all required fields and try again.");
       } else {
+        setApplicantName(fullName);
         setReferenceNumber(data.referenceNumber || "ESS-2026-NEW");
         e.currentTarget.reset();
       }
@@ -74,6 +80,9 @@ export function AdmissionForm() {
   }
 
   if (referenceNumber) {
+    const whatsappMessage = `Hello El-Shadai School Admissions! I just submitted an online admission application for ${applicantName || "my child"} (Reference Code: ${referenceNumber}). I would like to schedule our campus visit and placement assessment.`;
+    const whatsappUrl = `https://wa.me/233244000000?text=${encodeURIComponent(whatsappMessage)}`;
+
     return (
       <div className="rounded-2xl bg-[#f0f3fa] border border-slate-200 p-8 sm:p-10 text-center space-y-4">
         <div className="w-16 h-16 rounded-2xl bg-[#1b2a6b] text-white flex items-center justify-center mx-auto shadow-md">
@@ -96,13 +105,24 @@ export function AdmissionForm() {
             {referenceNumber}
           </span>
         </div>
-        <div className="pt-3">
+        <div className="pt-3 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="apple-press inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-sm transition-colors"
+          >
+            <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.149.929 3.182 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.768-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.075-1.99-.462-1.657-.687-2.716-2.385-2.798-2.496-.082-.112-.669-.893-.669-1.704 0-.811.424-1.21.574-1.373.15-.163.328-.204.437-.204.11 0 .219.002.315.006.101.005.237-.038.37.283.136.329.465 1.137.505 1.22.041.082.068.179.014.288-.055.11-.082.179-.164.275-.082.095-.172.213-.246.286-.082.082-.167.172-.072.336.095.163.424.7.91 1.134.626.558 1.155.731 1.319.813.164.082.26.069.356-.041.096-.11.411-.479.52-.644.11-.164.219-.137.369-.082.15.055.958.452 1.122.534.164.082.274.123.315.192.041.069.041.397-.103.802z" />
+            </svg>
+            <span>Chat with Admissions on WhatsApp</span>
+          </a>
           <button
             type="button"
             onClick={() => setReferenceNumber(null)}
-            className="apple-press px-6 py-2.5 rounded-xl bg-[#1b2a6b] text-white text-xs font-semibold cursor-pointer"
+            className="apple-press px-5 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-semibold cursor-pointer transition-colors"
           >
-            Submit Another Student Application
+            Submit Another Application
           </button>
         </div>
       </div>
