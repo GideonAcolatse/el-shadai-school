@@ -286,15 +286,28 @@ export function Footer({
           <p>
             © {new Date().getFullYear()} {schoolName}, Tema Newtown Manhean. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            <span className="text-slate-400">
+              Powered by <span className="font-semibold text-white">KedjeloEdu</span>
+            </span>
+            <span className="hidden sm:inline text-slate-600">•</span>
+            <a
+              href={process.env.NEXT_PUBLIC_PORTAL_URL || "http://elshadaisch-fees.test"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-300 hover:text-white transition-colors font-medium"
+            >
+              School Portal
+            </a>
+            <span className="hidden sm:inline text-slate-600">•</span>
             <Link href="/admission" className="hover:text-white transition-colors">
               Online Admissions
             </Link>
             <Link href="/notice" className="hover:text-white transition-colors">
-              School Calendar
+              Notice Board
             </Link>
             <Link href="/admin" className="hover:text-white transition-colors">
-              Staff Login
+              Staff CMS
             </Link>
           </div>
         </div>

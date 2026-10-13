@@ -11,6 +11,7 @@ import {
   Phone,
   ArrowRight,
   Calendar,
+  LogIn,
 } from "lucide-react";
 
 interface NavbarProps {
@@ -154,21 +155,31 @@ export function Navbar({
           </nav>
 
           {/* Desktop CTA Button */}
-          <div className="hidden md:flex items-center gap-2.5">
+          <div className="hidden md:flex items-center gap-2">
             {hasAnnouncement && (
               <button
                 type="button"
                 onClick={() => setPopupOpen(true)}
                 title="View School Announcement"
-                className="apple-press inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-[#fbf3f4] hover:bg-[#f5e4e7] text-[#9e3b4b] border border-[#9e3b4b]/20 text-xs font-bold cursor-pointer"
+                className="apple-press inline-flex items-center gap-1.5 px-3 py-2.5 rounded-xl bg-[#fbf3f4] hover:bg-[#f5e4e7] text-[#9e3b4b] border border-[#9e3b4b]/20 text-xs font-bold cursor-pointer"
               >
                 <Bell className="w-3.5 h-3.5" />
                 <span>Notice</span>
               </button>
             )}
+            <a
+              href={process.env.NEXT_PUBLIC_PORTAL_URL || "http://elshadaisch-fees.test"}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Parent, Student & Staff Portal"
+              className="apple-press inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200/80 text-slate-700 hover:text-slate-900 border border-slate-200/80 text-xs font-semibold"
+            >
+              <LogIn className="w-3.5 h-3.5 text-[#1b2a6b]" />
+              <span>Portal</span>
+            </a>
             <Link
               href="/admission"
-              className="apple-press inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1b2a6b] hover:bg-[#142052] text-white text-sm font-semibold shadow-xs"
+              className="apple-press inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl bg-[#1b2a6b] hover:bg-[#142052] text-white text-sm font-semibold shadow-xs"
             >
               <span>Apply Now</span>
               <ArrowRight className="w-4 h-4" />
@@ -240,6 +251,15 @@ export function Navbar({
                       View School Announcement
                     </button>
                   )}
+                  <a
+                    href={process.env.NEXT_PUBLIC_PORTAL_URL || "http://elshadaisch-fees.test"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="apple-press flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 font-semibold text-sm"
+                  >
+                    <LogIn className="w-4 h-4 text-[#1b2a6b]" />
+                    <span>Parent & Staff Portal</span>
+                  </a>
                   <Link
                     href="/admission"
                     onClick={() => setMobileOpen(false)}
