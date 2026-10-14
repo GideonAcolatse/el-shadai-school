@@ -75,9 +75,57 @@ export async function POST(req: NextRequest) {
 
     revalidatePath("/admin");
 
+    // Seamlessly sync with KadjeloEdu ERP admissions pipeline
+    const portalUrl = process.env.KADJELO_PORTAL_URL || "http://localhost:8000";
+    const portalSecret = process.env.KADJELO_ADMISSIONS_SECRET || "kadjelo-admissions-secret-2026";
+    let erpAdmissionNumber: string | null = null;
+
+    try {
+      const erpRes = await fetch(`${portalUrl.replace(/\/$/, "")}/api/v1/admissions/external`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${portalSecret}`,
+          "X-Admissions-Secret": portalSecret,
+        },
+        body: JSON.stringify({
+          studentFirstName: application.studentFirstName,
+          studentMiddleName: application.studentMiddleName,
+          studentLastName: application.studentLastName,
+          dateOfBirth: application.dateOfBirth,
+          gender: application.gender,
+          levelApplying: application.levelApplying,
+          gradeClass: application.gradeClass,
+          previousSchool: application.previousSchool,
+          guardianName: application.guardianName,
+          guardianRelation: application.guardianRelation,
+          guardianPhone: application.guardianPhone,
+          guardianEmail: application.guardianEmail,
+          residentialAddress: application.residentialAddress,
+          city: application.city,
+          medicalNotes: application.medicalNotes,
+          referenceNumber: application.referenceNumber,
+          source: "El-Shadai Public Website",
+        }),
+        signal: AbortSignal.timeout(5000),
+      });
+
+      if (erpRes.ok) {
+        const erpData = await erpRes.json();
+        erpAdmissionNumber = erpData?.admission?.admission_number || null;
+      } else {
+        const errText = await erpRes.text();
+        console.warn("KadjeloEdu ERP Admissions sync returned non-OK status:", erpRes.status, errText);
+      }
+    } catch (syncErr) {
+      // Non-blocking resilience: if ERP is unreachable or network times out, website admission still succeeds
+      console.warn("KadjeloEdu ERP Admissions sync (non-blocking fallback):", syncErr);
+    }
+
     return NextResponse.json({
       success: true,
       referenceNumber: application.referenceNumber,
+      erpAdmissionNumber,
       application,
     });
   } catch (error) {
